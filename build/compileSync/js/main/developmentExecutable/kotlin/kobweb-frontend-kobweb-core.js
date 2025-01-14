@@ -30,7 +30,7 @@
   var imul = Math.imul;
   var _Char___init__impl__6a9atx = kotlin_kotlin.$_$.g2;
   var charArrayOf = kotlin_kotlin.$_$.oa;
-  var trimStart = kotlin_kotlin.$_$.te;
+  var trimStart = kotlin_kotlin.$_$.re;
   var get_http = kotlin_com_varabyte_kobweb_browser_ext.$_$.a;
   var Unit_getInstance = kotlin_kotlin.$_$.m4;
   var protoOf = kotlin_kotlin.$_$.fc;
@@ -41,10 +41,10 @@
   var getPropertyCallableRef = kotlin_kotlin.$_$.za;
   var KMutableProperty0 = kotlin_kotlin.$_$.sc;
   var KMutableProperty1 = kotlin_kotlin.$_$.tc;
-  var lazy = kotlin_kotlin.$_$.hg;
-  var THROW_CCE = kotlin_kotlin.$_$.mf;
-  var Annotation = kotlin_kotlin.$_$.ye;
-  var Style = kotlin_org_jetbrains_compose_html_html_core.$_$.h5;
+  var lazy = kotlin_kotlin.$_$.fg;
+  var THROW_CCE = kotlin_kotlin.$_$.kf;
+  var Annotation = kotlin_kotlin.$_$.we;
+  var Style = kotlin_org_jetbrains_compose_html_html_core.$_$.i5;
   var get_px = kotlin_org_jetbrains_compose_html_html_core.$_$.w4;
   var padding = kotlin_org_jetbrains_compose_html_html_core.$_$.t4;
   var margin = kotlin_org_jetbrains_compose_html_html_core.$_$.n4;
@@ -54,7 +54,7 @@
   var layer = kotlin_com_varabyte_kobweb_compose_html_ext.$_$.h1;
   var initMetadataForObject = kotlin_kotlin.$_$.hb;
   var updateChangedFlags = kotlin_org_jetbrains_compose_runtime_runtime.$_$.a1;
-  var throwUninitializedPropertyAccessException = kotlin_kotlin.$_$.og;
+  var throwUninitializedPropertyAccessException = kotlin_kotlin.$_$.mg;
   var toString = kotlin_kotlin.$_$.ic;
   var IllegalStateException_init_$Create$ = kotlin_kotlin.$_$.s1;
   var getValue = kotlin_kotlin.$_$.i7;
@@ -67,7 +67,7 @@
   var mutableStateOf = kotlin_org_jetbrains_compose_runtime_runtime.$_$.u;
   var staticCompositionLocalOf = kotlin_org_jetbrains_compose_runtime_runtime.$_$.x;
   var initMetadataForInterface = kotlin_kotlin.$_$.fb;
-  var ensureNotNull = kotlin_kotlin.$_$.fg;
+  var ensureNotNull = kotlin_kotlin.$_$.dg;
   var isBlank = kotlin_kotlin.$_$.sd;
   var startsWith = kotlin_kotlin.$_$.he;
   var endsWith = kotlin_kotlin.$_$.nd;
@@ -75,10 +75,10 @@
   var dropLast = kotlin_kotlin.$_$.ld;
   var charSequenceLength = kotlin_kotlin.$_$.ra;
   var removePrefix = kotlin_kotlin.$_$.yd;
-  var THROW_IAE = kotlin_kotlin.$_$.nf;
+  var THROW_IAE = kotlin_kotlin.$_$.lf;
   var enumEntries = kotlin_kotlin.$_$.ga;
-  var Enum = kotlin_kotlin.$_$.bf;
-  var noWhenBranchMatchedException = kotlin_kotlin.$_$.ig;
+  var Enum = kotlin_kotlin.$_$.ze;
+  var noWhenBranchMatchedException = kotlin_kotlin.$_$.gg;
   var StringBuilder_init_$Create$ = kotlin_kotlin.$_$.e1;
   var ArrayList_init_$Create$ = kotlin_kotlin.$_$.k;
   var joinToString = kotlin_kotlin.$_$.m7;
@@ -88,7 +88,7 @@
   var LinkedHashMap_init_$Create$ = kotlin_kotlin.$_$.u;
   var split = kotlin_kotlin.$_$.ee;
   var getOrNull = kotlin_kotlin.$_$.h7;
-  var Exception = kotlin_kotlin.$_$.df;
+  var Exception = kotlin_kotlin.$_$.bf;
   var Exception_init_$Init$ = kotlin_kotlin.$_$.j1;
   var captureStack = kotlin_kotlin.$_$.na;
   var composableLambdaInstance = kotlin_org_jetbrains_compose_runtime_runtime.$_$.a;
@@ -98,7 +98,7 @@
   var DynamicNode = kotlin_com_varabyte_kobweb_client_server_internal.$_$.a;
   var toRouteString = kotlin_com_varabyte_kobweb_client_server_internal.$_$.c;
   var substringBefore = kotlin_kotlin.$_$.ke;
-  var to = kotlin_kotlin.$_$.qg;
+  var to = kotlin_kotlin.$_$.og;
   var substringAfter = kotlin_kotlin.$_$.je;
   var Collection = kotlin_kotlin.$_$.w4;
   var isInterface = kotlin_kotlin.$_$.rb;
@@ -118,7 +118,7 @@
   var contains_0 = kotlin_kotlin.$_$.jd;
   var toMutableMap = kotlin_kotlin.$_$.h9;
   var Div = kotlin_org_jetbrains_compose_html_html_core.$_$.f5;
-  var Text = kotlin_org_jetbrains_compose_html_html_core.$_$.j5;
+  var Text = kotlin_org_jetbrains_compose_html_html_core.$_$.k5;
   var DisposableEffect = kotlin_org_jetbrains_compose_runtime_runtime.$_$.k;
   var DisposableEffectResult = kotlin_org_jetbrains_compose_runtime_runtime.$_$.h;
   //endregion
@@ -1912,15 +1912,14 @@
   //endregion
   //region block: exports
   _.$_$ = _.$_$ || {};
-  _.$_$.a = get_api;
-  _.$_$.b = initKobweb;
-  _.$_$.c = KobwebApp;
-  _.$_$.d = Router;
-  _.$_$.e = remove;
-  _.$_$.f = rememberWorker;
-  _.$_$.g = UpdateHistoryMode_REPLACE_getInstance;
-  _.$_$.h = AppGlobals_getInstance;
-  _.$_$.i = Companion_getInstance_2;
+  _.$_$.a = initKobweb;
+  _.$_$.b = KobwebApp;
+  _.$_$.c = Router;
+  _.$_$.d = remove;
+  _.$_$.e = rememberWorker;
+  _.$_$.f = UpdateHistoryMode_REPLACE_getInstance;
+  _.$_$.g = AppGlobals_getInstance;
+  _.$_$.h = Companion_getInstance_2;
   //endregion
   return _;
 }));

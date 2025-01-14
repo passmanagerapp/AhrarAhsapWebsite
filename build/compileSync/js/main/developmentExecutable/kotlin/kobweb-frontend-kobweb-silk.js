@@ -30,11 +30,11 @@
   var rememberComposableLambda = kotlin_org_jetbrains_compose_runtime_runtime.$_$.c;
   var sourceInformationMarkerStart = kotlin_org_jetbrains_compose_runtime_runtime.$_$.w;
   var Companion_getInstance = kotlin_org_jetbrains_compose_runtime_runtime.$_$.g1;
-  var THROW_CCE = kotlin_kotlin.$_$.mf;
+  var THROW_CCE = kotlin_kotlin.$_$.kf;
   var sourceInformationMarkerEnd = kotlin_org_jetbrains_compose_runtime_runtime.$_$.v;
-  var KobwebApp = kotlin_com_varabyte_kobweb_kobweb_core.$_$.c;
+  var KobwebApp = kotlin_com_varabyte_kobweb_kobweb_core.$_$.b;
   var Unit_getInstance = kotlin_kotlin.$_$.m4;
-  var KobwebComposeStyles = kotlin_com_varabyte_kobweb_kobweb_compose.$_$.r2;
+  var KobwebComposeStyles = kotlin_com_varabyte_kobweb_kobweb_compose.$_$.s2;
   var SilkFoundationStyles = kotlin_com_varabyte_kobweb_silk_foundation.$_$.i1;
   var SilkWidgetVariables = kotlin_com_varabyte_kobweb_silk_widgets.$_$.c;
   var updateChangedFlags = kotlin_org_jetbrains_compose_runtime_runtime.$_$.a1;
