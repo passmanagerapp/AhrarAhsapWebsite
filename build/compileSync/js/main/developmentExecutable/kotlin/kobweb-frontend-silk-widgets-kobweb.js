@@ -62,10 +62,10 @@
   var rememberComposableLambda = kotlin_org_jetbrains_compose_runtime_runtime.$_$.c;
   var sourceInformationMarkerStart = kotlin_org_jetbrains_compose_runtime_runtime.$_$.w;
   var Companion_getInstance_5 = kotlin_org_jetbrains_compose_runtime_runtime.$_$.g1;
-  var THROW_CCE = kotlin_kotlin.$_$.kf;
+  var THROW_CCE = kotlin_kotlin.$_$.mf;
   var sourceInformationMarkerEnd = kotlin_org_jetbrains_compose_runtime_runtime.$_$.v;
   var Div = kotlin_org_jetbrains_compose_html_html_core.$_$.f5;
-  var Companion_getInstance_6 = kotlin_com_varabyte_kobweb_kobweb_core.$_$.h;
+  var Companion_getInstance_6 = kotlin_com_varabyte_kobweb_kobweb_core.$_$.i;
   var toModifier = kotlin_com_varabyte_kobweb_silk_foundation.$_$.y;
   var Img = kotlin_org_jetbrains_compose_html_html_core.$_$.h5;
   var Unit_getInstance = kotlin_kotlin.$_$.m4;

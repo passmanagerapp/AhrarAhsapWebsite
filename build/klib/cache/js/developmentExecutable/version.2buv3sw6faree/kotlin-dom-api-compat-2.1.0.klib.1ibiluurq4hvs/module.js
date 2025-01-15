@@ -13,17 +13,17 @@
   'use strict';
   //region block: imports
   var ArrayList_init_$Create$ = kotlin_kotlin.$_$.l;
-  var THROW_CCE = kotlin_kotlin.$_$.kf;
+  var THROW_CCE = kotlin_kotlin.$_$.mf;
   var isCharSequence = kotlin_kotlin.$_$.nb;
-  var trim = kotlin_kotlin.$_$.se;
+  var trim = kotlin_kotlin.$_$.ue;
   var toString = kotlin_kotlin.$_$.ic;
   var StringBuilder_init_$Create$ = kotlin_kotlin.$_$.e1;
   var charSequenceLength = kotlin_kotlin.$_$.ra;
   var joinTo = kotlin_kotlin.$_$.o7;
-  var toSet = kotlin_kotlin.$_$.j9;
   var Regex_init_$Create$ = kotlin_kotlin.$_$.d1;
+  var toSet = kotlin_kotlin.$_$.j9;
   var joinToString = kotlin_kotlin.$_$.m7;
-  var ensureNotNull = kotlin_kotlin.$_$.dg;
+  var ensureNotNull = kotlin_kotlin.$_$.fg;
   var VOID = kotlin_kotlin.$_$.f;
   //endregion
   //region block: pre-declaration
@@ -62,6 +62,13 @@
       return true;
     }
     return false;
+  }
+  function hasClass(_this__u8e3s4, cssClass) {
+    var tmp1 = _this__u8e3s4.className;
+    // Inline function 'kotlin.text.toRegex' call
+    var this_0 = '(^|.*\\s+)' + cssClass + '($|\\s+.*)';
+    // Inline function 'kotlin.text.matches' call
+    return Regex_init_$Create$(this_0).matches_evli6i_k$(tmp1);
   }
   function removeClass(_this__u8e3s4, cssClasses) {
     var tmp$ret$1;
@@ -104,13 +111,6 @@
     }
     return false;
   }
-  function hasClass(_this__u8e3s4, cssClass) {
-    var tmp1 = _this__u8e3s4.className;
-    // Inline function 'kotlin.text.toRegex' call
-    var this_0 = '(^|.*\\s+)' + cssClass + '($|\\s+.*)';
-    // Inline function 'kotlin.text.matches' call
-    return Regex_init_$Create$(this_0).matches_evli6i_k$(tmp1);
-  }
   function clear(_this__u8e3s4) {
     while (_this__u8e3s4.hasChildNodes()) {
       _this__u8e3s4.removeChild(ensureNotNull(_this__u8e3s4.firstChild));
@@ -120,7 +120,17 @@
     // Inline function 'kotlin.js.asDynamic' call
     return _this__u8e3s4[index];
   }
+  function EventSourceInit(withCredentials) {
+    withCredentials = withCredentials === VOID ? false : withCredentials;
+    var o = {};
+    o['withCredentials'] = withCredentials;
+    return o;
+  }
   function get_0(_this__u8e3s4, index) {
+    // Inline function 'kotlin.js.asDynamic' call
+    return _this__u8e3s4[index];
+  }
+  function get_1(_this__u8e3s4, index) {
     // Inline function 'kotlin.js.asDynamic' call
     return _this__u8e3s4[index];
   }
@@ -174,7 +184,8 @@
   _.$_$ = _.$_$ || {};
   _.$_$.a = addClass;
   _.$_$.b = clear;
-  _.$_$.c = removeClass;
+  _.$_$.c = hasClass;
+  _.$_$.d = removeClass;
   //endregion
   return _;
 }));

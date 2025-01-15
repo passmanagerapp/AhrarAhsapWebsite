@@ -13,12 +13,12 @@
   'use strict';
   //region block: imports
   var imul = Math.imul;
-  var Long = kotlin_kotlin.$_$.ef;
+  var Long = kotlin_kotlin.$_$.gf;
   var VOID = kotlin_kotlin.$_$.f;
   var protoOf = kotlin_kotlin.$_$.fc;
-  var THROW_CCE = kotlin_kotlin.$_$.kf;
+  var THROW_CCE = kotlin_kotlin.$_$.mf;
   var getStringHashCode = kotlin_kotlin.$_$.ab;
-  var Annotation = kotlin_kotlin.$_$.we;
+  var Annotation = kotlin_kotlin.$_$.ye;
   var initMetadataForClass = kotlin_kotlin.$_$.cb;
   //endregion
   //region block: pre-declaration

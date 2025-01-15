@@ -20,7 +20,7 @@
   var InlinePrimitiveDescriptor = kotlin_org_jetbrains_kotlinx_kotlinx_serialization_core.$_$.f;
   var protoOf = kotlin_kotlin.$_$.fc;
   var initMetadataForClass = kotlin_kotlin.$_$.cb;
-  var THROW_CCE = kotlin_kotlin.$_$.kf;
+  var THROW_CCE = kotlin_kotlin.$_$.mf;
   var Companion_getInstance = kotlin_kotlin.$_$.j4;
   var serializer_0 = kotlin_org_jetbrains_kotlinx_kotlinx_serialization_core.$_$.c;
   var Companion_getInstance_0 = kotlin_kotlin.$_$.k4;

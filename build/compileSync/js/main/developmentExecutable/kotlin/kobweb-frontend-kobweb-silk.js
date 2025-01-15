@@ -30,9 +30,9 @@
   var rememberComposableLambda = kotlin_org_jetbrains_compose_runtime_runtime.$_$.c;
   var sourceInformationMarkerStart = kotlin_org_jetbrains_compose_runtime_runtime.$_$.w;
   var Companion_getInstance = kotlin_org_jetbrains_compose_runtime_runtime.$_$.g1;
-  var THROW_CCE = kotlin_kotlin.$_$.kf;
+  var THROW_CCE = kotlin_kotlin.$_$.mf;
   var sourceInformationMarkerEnd = kotlin_org_jetbrains_compose_runtime_runtime.$_$.v;
-  var KobwebApp = kotlin_com_varabyte_kobweb_kobweb_core.$_$.b;
+  var KobwebApp = kotlin_com_varabyte_kobweb_kobweb_core.$_$.c;
   var Unit_getInstance = kotlin_kotlin.$_$.m4;
   var KobwebComposeStyles = kotlin_com_varabyte_kobweb_kobweb_compose.$_$.s2;
   var SilkFoundationStyles = kotlin_com_varabyte_kobweb_silk_foundation.$_$.i1;

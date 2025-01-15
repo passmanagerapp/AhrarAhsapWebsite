@@ -24,7 +24,7 @@
   var VOID = kotlin_kotlin.$_$.f;
   var Unit_getInstance = kotlin_kotlin.$_$.m4;
   var initMetadataForInterface = kotlin_kotlin.$_$.fb;
-  var THROW_CCE = kotlin_kotlin.$_$.kf;
+  var THROW_CCE = kotlin_kotlin.$_$.mf;
   var IOSerializer = kotlin_com_varabyte_kobweb_kobweb_serialization.$_$.a;
   //endregion
   //region block: pre-declaration
