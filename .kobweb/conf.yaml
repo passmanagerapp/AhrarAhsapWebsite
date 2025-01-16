@@ -9,6 +9,6 @@ server:
       api: "build/libs/ahrarwood.jar"
     prod:
       script: "build/kotlin-webpack/js/productionExecutable/ahrarwood.js"
-      siteRoot: ".docs"
+      siteRoot: ".kobweb/site"
 
   port: 8080
