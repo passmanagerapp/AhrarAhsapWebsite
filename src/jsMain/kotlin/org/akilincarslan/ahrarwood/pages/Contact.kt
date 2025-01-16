@@ -37,23 +37,17 @@ import org.jetbrains.compose.web.dom.Text
 fun ContactPage(modifier: Modifier = Modifier) {
     Box(modifier = Modifier.fillMaxSize(),
     ) {
-        val name = remember { mutableStateOf("") }
         var title = remember { mutableStateOf("") }
         val message = remember { mutableStateOf("") }
-        val email = remember { mutableStateOf("") }
         SpanText("Contact us", modifier = modifier.fontSize(28.px).align(Alignment.TopCenter))
 
         Column(modifier = modifier.align(Alignment.Center)) {
-            Row(modifier = modifier) {
-                Input(type = InputType.Text, value = name.value, onValueChange = {name.value = it}, placeholder = "Name")
-                Input(type = InputType.Text, value = email.value, onValueChange = {email.value = it}, placeholder = "Email address")
-            }
             Input(type = InputType.Text, value = title.value, onValueChange = {title.value = it}, placeholder = "Title")
             Input(type = InputType.Text, value = message.value, onValueChange = {message.value = it}, placeholder = "Message", modifier = modifier.fillMaxWidth().height(180.px))
             Button(onClick = {
-                val mailtoLink = "mailto:${email.value}?subject=${message.value}"
+                val mailtoLink = "mailto:${Constants.EMAIL_ADDRESS}?subject=${title.value}&body=${message.value}"
                 window.location.href = mailtoLink
-            }, modifier = modifier.fillMaxWidth(), type = ButtonType.Submit, enabled = name.value.isNotEmpty() && email.toString().isNotEmpty()) {
+            }, modifier = modifier.fillMaxWidth(), type = ButtonType.Submit, enabled = title.value.isNotEmpty() && message.toString().isNotEmpty()) {
                 Text("Submit")
             }
         }
