@@ -35,6 +35,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
 import kotlinx.browser.document
+import org.akilincarslan.ahrarwood.constants.Constants
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.percent
@@ -78,7 +79,8 @@ fun HomeBanner(
                         src = it,
                         modifier = Modifier
                             .fillMaxSize()
-                            .objectFit(ObjectFit.Cover)
+                            .objectFit(ObjectFit.Cover),
+                        alt = Constants.BANNER_ALT
                     )
                 }
             }

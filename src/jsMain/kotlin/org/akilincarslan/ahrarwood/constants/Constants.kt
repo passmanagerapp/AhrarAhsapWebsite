@@ -6,4 +6,10 @@ object Constants {
     const val YOUTUBE_SHOP_URL = "https://www.youtube.com/@ahrarwood"
     const val PINTEREST_SHOP_URL = "https://tr.pinterest.com/ahrarwoodd/"
     const val EMAIL_ADDRESS = "ahrarahsap@gmail.com"
+
+
+
+    const val BANNER_ALT = "anxiety bookshelf,mini bookshelf,book lover gift, mini books, anxiety bookshelf with books," +
+            "anxiety bookcase, anxiety book shelf, bookshelf decor, mini book shelf, book nook," +
+            "gift for book lovers, book holder, book rest, wood book holder, book house"
 }
