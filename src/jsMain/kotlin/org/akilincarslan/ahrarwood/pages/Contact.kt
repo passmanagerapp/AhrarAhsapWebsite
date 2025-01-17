@@ -24,8 +24,8 @@ import com.varabyte.kobweb.silk.components.forms.Input
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.text.SpanText
 import kotlinx.browser.window
+import org.akilincarslan.ahrarwood.base.AboutExternalIcon
 import org.akilincarslan.ahrarwood.constants.Constants
-import org.akilincarslan.ahrarwood.extensions.AboutExternalIcon
 import org.jetbrains.compose.web.attributes.ButtonType
 import org.jetbrains.compose.web.attributes.InputType
 import org.jetbrains.compose.web.css.px
