@@ -20,7 +20,9 @@ kobweb {
 
 kotlin {
     configAsKobwebApplication("ahrarwood", includeServer = true)
-
+    js(IR) {
+        browser()
+    }
     sourceSets {
         commonMain.dependencies {
             implementation(libs.compose.runtime)
@@ -33,6 +35,8 @@ kotlin {
             implementation(libs.silk.icons.fa)
             implementation(libs.kobwebx.markdown)
             implementation(project(":worker"))
+            implementation("dev.gitlive:firebase-installations:2.1.0")
+            implementation("dev.gitlive:firebase-analytics:2.1.0")
         }
         jvmMain.dependencies {
             compileOnly(libs.kobweb.api) // Provided by Kobweb backend at runtime
