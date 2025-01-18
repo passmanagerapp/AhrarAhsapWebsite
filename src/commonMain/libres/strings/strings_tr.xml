@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home">Anasayfa</string>
+    <string name="about">Hakkında</string>
+    <string name="contact">İletişim</string>
+    <string name="book_stands">Kitap standı</string>
+
+    <!-- Section -->
+    <string name="section1_title">Özel günlere özel paketleme</string>
+    <string name="section1_button">Daha fazla bilgi</string>
+    <string name="section1_desc">Anneler günü, yılbaşı, sevgiler gibi
+        özel günlerde farklı paketleme yapıyoruz.</string>
+
+    <string name="section2_title">Yatakyanı kitap standları</string>
+    <string name="section2_button">Sipariş ver</string>
+    <string name="section2_desc">En beğendiğin kitabı okurken kitabı koyacağın bir kitap standı mı arıyorsun? </string>
+</resources>

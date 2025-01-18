@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home">Heim</string>
+    <string name="about">Um</string>
+    <string name="contact">Kontakt</string>
+    <string name="book_stand">Bücherständer</string>
+
+    <!-- Section -->
+    <string name="section1_title">Verpackung für besondere Tage</string>
+    <string name="section1_button">Mehr Infos</string>
+    <string name="section1_desc">Für besondere Tage wie Muttertag, Weihnachten oder Valentinstag verpacken wir Ihre Bestellungen sorgfältig.</string>
+
+    <string name="section2_title">Buchständer fürs Bett</string>
+    <string name="section2_button">Jetzt bestellen</string>
+    <string name="section2_desc">Suchen Sie nach einem Buchhalter, während Sie im Bett Ihr Lieblingsbuch lesen?</string>
+</resources>

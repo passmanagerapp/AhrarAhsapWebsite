@@ -97,7 +97,7 @@ fun HomeBanner(
                 Div(
                     attrs = Modifier
                         .size(12.px)
-                        .backgroundColor(if (index == currentIndex.value) Colors.Black else Colors.Gray)
+                        .backgroundColor(if (index == currentIndex.value) Colors.White else Colors.LightGray)
                         .borderRadius(50.percent)
                         .cursor(Cursor.Pointer)
                         .toAttrs({
