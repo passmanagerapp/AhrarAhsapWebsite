@@ -42,17 +42,20 @@ fun HomePage(modifier: Modifier = Modifier) {
         worker.postInput("Hello, worker!")
     }
     val ctx = rememberPageContext()
-    Box(modifier.fillMaxSize()) {
+    Column(
+        modifier = modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        HomeHeader(modifier)
         Column(
-            modifier = modifier.fillMaxWidth(),
+            modifier = modifier
+                .fillMaxSize()
+                .margin(top = 102.px),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            HomeHeader(modifier)
             HomeBanner(modifier)
             HomeSection(modifier)
             HomeFooter(modifier)
         }
-
-
     }
 }

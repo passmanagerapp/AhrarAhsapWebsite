@@ -5,6 +5,7 @@
     <string name="about">About</string>
     <string name="contact">Contact</string>
     <string name="book_stands">Book stand</string>
+    <string name="search">Search</string>
 
     <!-- Section -->
     <string name="section1_title">Special days packaging</string>
@@ -15,5 +16,9 @@
     <string name="section2_title">Bedside book stands</string>
     <string name="section2_button">Order now</string>
     <string name="section2_desc">Are you looking for a book holder while you are reading your favorite book at bed? </string>
+
+    <string name="section3_title">Create miniature library</string>
+    <string name="section3_button">Create now</string>
+    <string name="section3_desc">What is your favorite books, create a collection of your favorite book list and let use to produce your miniature library!</string>
 
 </resources>
