@@ -22,9 +22,12 @@ import com.varabyte.kobweb.worker.rememberWorker
 import dev.gitlive.firebase.analytics.analytics
 import org.akilincarslan.ahrarwood.base.AboutExternalIcon
 import org.akilincarslan.ahrarwood.base.HomeBanner
+import org.akilincarslan.ahrarwood.base.HomeFooter
+import org.akilincarslan.ahrarwood.base.HomeHeader
 import org.akilincarslan.ahrarwood.base.HomeSection
 import org.akilincarslan.ahrarwood.base.HomeSectionButton
 import org.akilincarslan.ahrarwood.constants.Constants
+import org.akilincarslan.ahrarwood.constants.PageRoutes
 import org.akilincarslan.ahrarwood.firebase.Analytics
 import org.akilincarslan.ahrarwood.worker.EchoWorker
 import org.jetbrains.compose.web.css.Color
@@ -44,55 +47,10 @@ fun HomePage(modifier: Modifier = Modifier) {
             modifier = modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(modifier = modifier
-                .fillMaxWidth()
-                .margin(top = 36.px)
-                , contentAlignment = Alignment.TopCenter) {
-                Row(
-                    modifier = modifier
-                        .margin(16.px)
-                        .align(Alignment.TopStart)
-                ) {
-                    Image("/banner_logo.jpg", modifier = modifier.width(360.px).height(120.px))
-                }
-
-                Row(
-                    modifier = modifier
-                        .margin(16.px)
-                        .align(Alignment.TopEnd),
-                ) {
-                    HomeSectionButton(modifier,"Home","/", onClick = {
-                        //ctx.router.navigateTo(it)
-                        Analytics.logEvent("homeClick")
-                    })
-                    HomeSectionButton(modifier,"Book stands","/book-stands", onClick = {
-                        //ctx.router.navigateTo(it)
-                    })
-                    HomeSectionButton(modifier,"About","/about", onClick = {
-                        //ctx.router.navigateTo(it)
-                    })
-                    HomeSectionButton(modifier,"Contact","/contact", onClick = {
-                        //ctx.router.navigateTo(it)
-                    })
-                }
-            }
+            HomeHeader(modifier)
             HomeBanner(modifier)
-            //HomeSection(modifier)
-            Box(
-                modifier = modifier.fillMaxWidth()
-                    .height(96.px)
-                    .padding(leftRight = 36.px)
-                    .backgroundColor(Color("#E6E6E6")),
-            ) {
-                SpanText(text = "Copyright 2025 dev0029", modifier = modifier.align(Alignment.CenterStart))
-                Row(modifier = modifier.align(Alignment.CenterEnd)) {
-                    AboutExternalIcon(modifier,"/whatsapp.png", Constants.WHATSAPP_URL)
-                    AboutExternalIcon(modifier,"/etsy.png", Constants.ETSY_SHOP_URL)
-                    AboutExternalIcon(modifier,"/instagram.png", Constants.INSTAGRAM_SHOP_URL)
-                    AboutExternalIcon(modifier,"/youtube.png", Constants.YOUTUBE_SHOP_URL)
-                    AboutExternalIcon(modifier,"/pinterest.png", Constants.PINTEREST_SHOP_URL)
-                }
-            }
+            HomeSection(modifier)
+            HomeFooter(modifier)
         }
 
 

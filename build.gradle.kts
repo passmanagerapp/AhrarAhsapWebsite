@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kobweb.application)
     alias(libs.plugins.kobwebx.markdown)
+    alias(libs.plugins.libres)
 }
 
 group = "org.akilincarslan.ahrarwood"
@@ -26,6 +27,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.compose.runtime)
+            implementation(libs.libres)
         }
 
         jsMain.dependencies {
@@ -42,4 +44,10 @@ kotlin {
             compileOnly(libs.kobweb.api) // Provided by Kobweb backend at runtime
         }
     }
+}
+
+libres {
+    generatedClassName = "Res"
+    generateNamedArguments = true
+    baseLocaleLanguageCode = "en"
 }

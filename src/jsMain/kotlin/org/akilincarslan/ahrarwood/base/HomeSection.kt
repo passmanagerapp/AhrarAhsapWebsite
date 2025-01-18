@@ -44,10 +44,13 @@ import com.varabyte.kobweb.compose.ui.modifiers.whiteSpace
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.text.SpanText
 import kotlinx.browser.document
+import kotlinx.browser.window
 import org.akilincarslan.ahrarwood.constants.Constants
+import org.akilincarslan.ahrarwood.constants.PageRoutes
 import org.akilincarslan.ahrarwood.models.Section
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -63,15 +66,15 @@ import org.w3c.dom.HTMLElement
 fun HomeSection(
     modifier: Modifier
 ) {
+    val ctx = rememberPageContext()
     val banners = listOf<Section>(
-        Section(title = "Special days packaging", description = "For special days; such as Mother's day, Christmas, Valentine's day we carefully package your orders.",
-            imagePath = "/packaging.png", imagePath2 = "/packaging2.png"),
-        Section(title = "Bedside book stands","Are you looking for a book holder while you are reading your favorite book at bed? ",
-            imagePath = "/packaging.png", imagePath2 = "/packaging2.png"),
+        Section(title = Res.string.section1_title, description = Res.string.section1_desc,
+            buttonTitle = Res.string.section1_button, navPath = PageRoutes.PACKAGING, imagePath = "/packaging.png", imagePath2 = "/packaging2.png"),
+        Section(title = Res.string.section2_title,Res.string.section2_desc,
+            buttonTitle = Res.string.section2_button, navPath = null, imagePath = "/section2_1.png", imagePath2 = "/section2_2.png"),
     )
     val currentIndex = remember { mutableStateOf(0) }
     val containerId = "sectionContainer"
-
     Box(
         modifier = modifier
             .fillMaxWidth()
@@ -90,7 +93,7 @@ fun HomeSection(
                 .scrollBehavior(ScrollBehavior.Smooth)
                 .toAttrs()
         ){
-            banners.forEach {
+            banners.forEach { section ->
                 Row(
                     modifier  = modifier.backgroundColor(Color("#A96532"))
                         .color(Colors.White)
@@ -106,9 +109,9 @@ fun HomeSection(
                             .fillMaxSize(),
                         verticalArrangement = Arrangement.Center
                     ) {
-                        SpanText(it.title,
+                        SpanText(section.title,
                             modifier = modifier.fontSize(48.px).margin(bottom = 12.px))
-                        SpanText(it.description)
+                        SpanText(section.description)
                         Box(modifier = Modifier.height(24.px))
 
                         // Beautiful Order Now button
@@ -124,7 +127,12 @@ fun HomeSection(
                                     property("box-shadow", "0 4px 8px rgba(0, 0, 0, 0.1)")
                                     property("transform", "scale(1)")
                                 }
-                                .onClick { /* Add your order action here */ }
+                                .onClick {
+                                    /*section.navPath?.let { path ->
+                                        ctx.router.navigateTo(path)
+                                    }*/
+                                    window.open(Constants.ETSY_SHOP_URL, target = "_blank")
+                                }
                                 // Hover states
                                 .onMouseOver {
                                     (it.target as? HTMLElement)?.style?.apply {
@@ -140,7 +148,7 @@ fun HomeSection(
                                 }
                         ) {
                             SpanText(
-                                text = "Order Now",
+                                text = section.buttonTitle,
                                 modifier = Modifier
                                     .color(Colors.SaddleBrown)
                                     .fontSize(18.px)
@@ -158,17 +166,17 @@ fun HomeSection(
                         horizontalAlignment = Alignment.CenterHorizontally) {
                         Box(
                             modifier = modifier
-                                .width(150.px)
-                                .height(150.px)
-                                .backgroundColor(Colors.White)
-                                .borderRadius(16.px)
+                                .width(240.px)
+                                .height(240.px)
+                                .backgroundColor(Colors.Transparent)
+                                .borderRadius(32.px)
                                 .overflow(Overflow.Hidden)
                                 .styleModifier {
                                     property("box-shadow", "0 4px 8px rgba(0, 0, 0, 0.1)")
                                 }
                         ) {
                             Image(
-                                src = it.imagePath,
+                                src = section.imagePath,
                                 modifier = Modifier
                                     .fillMaxSize()
                                     .objectFit(ObjectFit.Fill),
@@ -178,9 +186,9 @@ fun HomeSection(
                         Box(
                             modifier = modifier
                                 .margin(right = 120.px, top = 24.px)
-                                .width(150.px)
-                                .height(150.px)
-                                .backgroundColor(Colors.White)
+                                .width(240.px)
+                                .height(240.px)
+                                .backgroundColor(Colors.Transparent)
                                 .borderRadius(16.px)
                                 .overflow(Overflow.Hidden)
                                 .styleModifier {
@@ -188,7 +196,7 @@ fun HomeSection(
                                 }
                         ) {
                             Image(
-                                src = it.imagePath2,
+                                src = section.imagePath2,
                                 modifier = Modifier
                                     .fillMaxSize()
                                     .objectFit(ObjectFit.Fill),

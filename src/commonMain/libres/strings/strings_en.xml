@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Header -->
+    <string name="home">Home</string>
+    <string name="about">About</string>
+    <string name="contact">Contact</string>
+    <string name="book_stands">Book stand</string>
+
+    <!-- Section -->
+    <string name="section1_title">Special days packaging</string>
+    <string name="section1_button">More info</string>
+    <string name="section1_desc">For special days; such as Mother's Day, Christmas, Valentine's Day we carefully package your orders.</string>
+
+
+    <string name="section2_title">Bedside book stands</string>
+    <string name="section2_button">Order now</string>
+    <string name="section2_desc">Are you looking for a book holder while you are reading your favorite book at bed? </string>
+
+</resources>
