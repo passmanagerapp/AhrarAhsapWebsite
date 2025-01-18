@@ -42,6 +42,12 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Div
 import org.w3c.dom.HTMLDivElement
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import com.varabyte.kobweb.compose.ui.modifiers.onMouseEnter
+import com.varabyte.kobweb.compose.ui.modifiers.onMouseLeave
+import kotlinx.coroutines.delay
+import kotlin.time.Duration.Companion.seconds
 
 @Composable
 fun HomeBanner(
@@ -50,6 +56,28 @@ fun HomeBanner(
     val banners = listOf<String>("banner1.png","banner2.png","banner3.png","banner4.png")
     val currentIndex = remember { mutableStateOf(0) }
     val containerId = "carouselContainer"
+    val isHovered = remember { mutableStateOf(false) }
+    
+    LaunchedEffect(Unit) {
+        while (true) {
+            delay(5.seconds)
+            if (!isHovered.value) {
+                currentIndex.value = (currentIndex.value + 1) % banners.size
+                val container = document.getElementById(containerId) as? HTMLDivElement
+                container?.scrollTo(
+                    x = (container.clientWidth * currentIndex.value).toDouble(),
+                    y = 0.0
+                )
+            }
+        }
+    }
+
+    // Add cleanup when component is disposed
+    DisposableEffect(Unit) {
+        onDispose {
+            // Cleanup if needed
+        }
+    }
 
     Box(
         modifier = modifier
@@ -57,6 +85,8 @@ fun HomeBanner(
             .height(420.px)
             .position(Position.Relative)
             .overflow(Overflow.Hidden)
+            .onMouseEnter { isHovered.value = true }
+            .onMouseLeave { isHovered.value = false }
     ) {
         Div(
             attrs = Modifier
@@ -104,7 +134,10 @@ fun HomeBanner(
                             onClick {
                                 currentIndex.value = index
                                 val container = document.getElementById(containerId) as? HTMLDivElement
-                                container?.scrollTo(x = (container.clientWidth * index).toDouble(), y = 0.0)
+                                container?.scrollTo(
+                                    x = (container.clientWidth * index).toDouble(),
+                                    y = 0.0
+                                )
                             }
                         })
                 )

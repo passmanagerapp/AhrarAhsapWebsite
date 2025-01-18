@@ -4,6 +4,7 @@
     <string name="about">Hakkında</string>
     <string name="contact">İletişim</string>
     <string name="book_stands">Kitap standı</string>
+    <string name="search">Arama yapın</string>
 
     <!-- Section -->
     <string name="section1_title">Özel günlere özel paketleme</string>
@@ -14,4 +15,8 @@
     <string name="section2_title">Yatakyanı kitap standları</string>
     <string name="section2_button">Sipariş ver</string>
     <string name="section2_desc">En beğendiğin kitabı okurken kitabı koyacağın bir kitap standı mı arıyorsun? </string>
+
+    <string name="section3_title">Kitaplığını kendin oluştur</string>
+    <string name="section3_button">Şimdi başla</string>
+    <string name="section3_desc">Favori kitap listeni oluştur, bizde sana minyatür kitaplığını oluşturalım</string>
 </resources>

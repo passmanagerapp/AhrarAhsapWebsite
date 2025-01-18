@@ -72,6 +72,8 @@ fun HomeSection(
             buttonTitle = Res.string.section1_button, navPath = PageRoutes.PACKAGING, imagePath = "/packaging.png", imagePath2 = "/packaging2.png"),
         Section(title = Res.string.section2_title,Res.string.section2_desc,
             buttonTitle = Res.string.section2_button, navPath = null, imagePath = "/section2_1.png", imagePath2 = "/section2_2.png"),
+        Section(title = Res.string.section3_title,Res.string.section3_desc,
+            buttonTitle = Res.string.section3_button, navPath = null, imagePath = "/section3.png", imagePath2 = "/section3.png"),
     )
     val currentIndex = remember { mutableStateOf(0) }
     val containerId = "sectionContainer"
@@ -160,14 +162,13 @@ fun HomeSection(
                     }
                     Column(
                         modifier = modifier
-                            .fillMaxHeight()
+                            .height(225.px)
                             .width(450.px),
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally) {
                         Box(
                             modifier = modifier
-                                .width(240.px)
-                                .height(240.px)
+                                .fillMaxSize()
                                 .backgroundColor(Colors.Transparent)
                                 .borderRadius(32.px)
                                 .overflow(Overflow.Hidden)
@@ -178,28 +179,7 @@ fun HomeSection(
                             Image(
                                 src = section.imagePath,
                                 modifier = Modifier
-                                    .fillMaxSize()
-                                    .objectFit(ObjectFit.Fill),
-                                alt = "About Image"
-                            )
-                        }
-                        Box(
-                            modifier = modifier
-                                .margin(right = 120.px, top = 24.px)
-                                .width(240.px)
-                                .height(240.px)
-                                .backgroundColor(Colors.Transparent)
-                                .borderRadius(16.px)
-                                .overflow(Overflow.Hidden)
-                                .styleModifier {
-                                    property("box-shadow", "0 4px 8px rgba(0, 0, 0, 0.1)")
-                                }
-                        ) {
-                            Image(
-                                src = section.imagePath2,
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .objectFit(ObjectFit.Fill),
+                                    .fillMaxSize(),
                                 alt = "About Image"
                             )
                         }
