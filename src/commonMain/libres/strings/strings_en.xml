@@ -7,11 +7,13 @@
     <string name="book_stands">Book stand</string>
     <string name="search">Search</string>
 
+    <!-- Footer -->
+    <string name="footer_author">Copyright 2025 dev0029</string>
+
     <!-- Section -->
     <string name="section1_title">Special days packaging</string>
     <string name="section1_button">More info</string>
     <string name="section1_desc">For special days; such as Mother's Day, Christmas, Valentine's Day we carefully package your orders.</string>
-
 
     <string name="section2_title">Bedside book stands</string>
     <string name="section2_button">Order now</string>
@@ -21,4 +23,17 @@
     <string name="section3_button">Create now</string>
     <string name="section3_desc">What is your favorite books, create a collection of your favorite book list and let use to produce your miniature library!</string>
 
+
+    <!-- Shipping -->
+    <string name="shipping_title">Shipping</string>
+    <string name="shipping_desc1">Fast and free shipping</string>
+    <string name="shipping_description">With our express delivery service, your items will arrive at your doorstep within 2-4 business days. We proudly ship to the following U.S. states: Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina, South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia, Wisconsin, and Wyoming.</string>
+    <string name="shipping_description2">Additionally, we ship to Canada, UK and all EU countries, ensuring a seamless shopping experience for all our customers in North America.</string>
+
+    <!-- Contact -->
+    <string name="contact_title">Contact us</string>
+    <string name="contact_email_name">Your name</string>
+    <string name="contact_email_subject">Subject</string>
+    <string name="contact_email_message">Message</string>
+    <string name="contact_email_send_message">Send message</string>
 </resources>

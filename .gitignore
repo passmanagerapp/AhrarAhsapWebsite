@@ -6,3 +6,5 @@ build
 build/
 /build
 src/jsMain/kotlin/org/akilincarslan/ahrarwood/firebase
+src/jsMain/kotlin/org/akilincarslan/ahrarwood/constants
+src/jsMain/resources/public

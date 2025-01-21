@@ -47,13 +47,14 @@ import androidx.compose.runtime.LaunchedEffect
 import com.varabyte.kobweb.compose.ui.modifiers.onMouseEnter
 import com.varabyte.kobweb.compose.ui.modifiers.onMouseLeave
 import kotlinx.coroutines.delay
+import org.akilincarslan.ahrarwood.constants.ImagePaths
 import kotlin.time.Duration.Companion.seconds
 
 @Composable
 fun HomeBanner(
     modifier: Modifier
 ) {
-    val banners = listOf<String>("banner1.png","banner2.png","banner3.png","banner4.png")
+    val banners = listOf<String>(ImagePaths.BANNER1, ImagePaths.BANNER2, ImagePaths.BANNER3, ImagePaths.BANNER4)
     val currentIndex = remember { mutableStateOf(0) }
     val containerId = "carouselContainer"
     val isHovered = remember { mutableStateOf(false) }
