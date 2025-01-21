@@ -25,6 +25,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.flex
+import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.height
@@ -50,6 +51,7 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import kotlinx.browser.document
 import kotlinx.browser.window
 import org.akilincarslan.ahrarwood.constants.Constants
+import org.akilincarslan.ahrarwood.constants.ImagePaths
 import org.akilincarslan.ahrarwood.constants.PageRoutes
 import org.akilincarslan.ahrarwood.models.Section
 import org.jetbrains.compose.web.css.Color
@@ -69,11 +71,11 @@ fun HomeSection(
     val ctx = rememberPageContext()
     val banners = listOf<Section>(
         Section(title = Res.string.section1_title, description = Res.string.section1_desc,
-            buttonTitle = Res.string.section1_button, navPath = PageRoutes.PACKAGING, imagePath = "/packaging.png", imagePath2 = "/packaging2.png"),
+            buttonTitle = Res.string.section1_button, navPath = PageRoutes.PACKAGING, imagePath = ImagePaths.SECTION1),
         Section(title = Res.string.section2_title,Res.string.section2_desc,
-            buttonTitle = Res.string.section2_button, navPath = null, imagePath = "/section2_1.png", imagePath2 = "/section2_2.png"),
+            buttonTitle = Res.string.section2_button, navPath = null, imagePath = ImagePaths.SECTION2),
         Section(title = Res.string.section3_title,Res.string.section3_desc,
-            buttonTitle = Res.string.section3_button, navPath = null, imagePath = "/section3.png", imagePath2 = "/section3.png"),
+            buttonTitle = Res.string.section3_button, navPath = null, imagePath = ImagePaths.SECTION3),
     )
     val currentIndex = remember { mutableStateOf(0) }
     val containerId = "sectionContainer"
@@ -112,8 +114,12 @@ fun HomeSection(
                         verticalArrangement = Arrangement.Center
                     ) {
                         SpanText(section.title,
-                            modifier = modifier.fontSize(48.px).margin(bottom = 12.px))
-                        SpanText(section.description)
+                            modifier = modifier
+                                .fontSize(48.px).margin(bottom = 12.px))
+                        SpanText(
+                            section.description,
+                            modifier = modifier
+                        )
                         Box(modifier = Modifier.height(24.px))
 
                         // Beautiful Order Now button

@@ -11,7 +11,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.silk.components.text.SpanText
 import org.akilincarslan.ahrarwood.constants.Constants
-import org.jetbrains.compose.web.css.Color
+import org.akilincarslan.ahrarwood.constants.ImagePaths
+import org.akilincarslan.ahrarwood.utils.footerBgColor
 import org.jetbrains.compose.web.css.px
 
 @Composable
@@ -22,15 +23,15 @@ fun HomeFooter(
         modifier = modifier.fillMaxWidth()
             .height(96.px)
             .padding(leftRight = 36.px)
-            .backgroundColor(Color("#E6E6E6")),
+            .backgroundColor(footerBgColor),
     ) {
-        SpanText(text = "Copyright 2025 dev0029", modifier = modifier.align(Alignment.CenterStart))
+        SpanText(text = Res.string.footer_author, modifier = modifier.align(Alignment.CenterStart))
         Row(modifier = modifier.align(Alignment.CenterEnd)) {
-            AboutExternalIcon(modifier,"/whatsapp.png", Constants.WHATSAPP_URL)
-            AboutExternalIcon(modifier,"/etsy.png", Constants.ETSY_SHOP_URL)
-            AboutExternalIcon(modifier,"/instagram.png", Constants.INSTAGRAM_SHOP_URL)
-            AboutExternalIcon(modifier,"/youtube.png", Constants.YOUTUBE_SHOP_URL)
-            AboutExternalIcon(modifier,"/pinterest.png", Constants.PINTEREST_SHOP_URL)
+            AboutExternalIcon(modifier, ImagePaths.WHATSAPP, Constants.WHATSAPP_URL)
+            AboutExternalIcon(modifier, ImagePaths.ETSY, Constants.ETSY_SHOP_URL)
+            AboutExternalIcon(modifier, ImagePaths.INSTAGRAM, Constants.INSTAGRAM_SHOP_URL)
+            AboutExternalIcon(modifier, ImagePaths.YOUTUBE, Constants.YOUTUBE_SHOP_URL)
+            AboutExternalIcon(modifier, ImagePaths.PINTEREST, Constants.PINTEREST_SHOP_URL)
         }
     }
 

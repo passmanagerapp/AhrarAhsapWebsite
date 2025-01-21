@@ -26,6 +26,7 @@ import org.akilincarslan.ahrarwood.base.HomeFooter
 import org.akilincarslan.ahrarwood.base.HomeHeader
 import org.akilincarslan.ahrarwood.base.HomeSection
 import org.akilincarslan.ahrarwood.base.HomeSectionButton
+import org.akilincarslan.ahrarwood.base.HomeShipping
 import org.akilincarslan.ahrarwood.constants.Constants
 import org.akilincarslan.ahrarwood.constants.PageRoutes
 import org.akilincarslan.ahrarwood.firebase.Analytics
@@ -46,7 +47,7 @@ fun HomePage(modifier: Modifier = Modifier) {
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        HomeHeader(modifier)
+        HomeHeader(PageRoutes.HOME,modifier)
         Column(
             modifier = modifier
                 .fillMaxSize()
@@ -55,6 +56,7 @@ fun HomePage(modifier: Modifier = Modifier) {
         ) {
             HomeBanner(modifier)
             HomeSection(modifier)
+            HomeShipping(modifier)
             HomeFooter(modifier)
         }
     }

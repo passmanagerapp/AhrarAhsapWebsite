@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Header -->
     <string name="home">Anasayfa</string>
     <string name="about">Hakkında</string>
     <string name="contact">İletişim</string>
     <string name="book_stands">Kitap standı</string>
     <string name="search">Arama yapın</string>
 
+    <!-- Footer -->
+    <string name="footer_author">Copyright 2025 dev0029</string>
+
     <!-- Section -->
     <string name="section1_title">Özel günlere özel paketleme</string>
     <string name="section1_button">Daha fazla bilgi</string>
-    <string name="section1_desc">Anneler günü, yılbaşı, sevgiler gibi
-        özel günlerde farklı paketleme yapıyoruz.</string>
+    <string name="section1_desc">Anneler günü, yılbaşı, sevgiler gibi özel günlerde farklı paketleme yapıyoruz.</string>
 
     <string name="section2_title">Yatakyanı kitap standları</string>
     <string name="section2_button">Sipariş ver</string>
@@ -19,4 +22,18 @@
     <string name="section3_title">Kitaplığını kendin oluştur</string>
     <string name="section3_button">Şimdi başla</string>
     <string name="section3_desc">Favori kitap listeni oluştur, bizde sana minyatür kitaplığını oluşturalım</string>
+
+
+    <!-- Shipping -->
+    <string name="shipping_title">Kargo</string>
+    <string name="shipping_desc1">Hızlı ve özenli kargolama</string>
+    <string name="shipping_description"> Siparişleriniz özenle hazırlandıktan sonra kargoya verilir, siparişleriniz kargo durumunu sitemizden her zaman sorgulayabilirsiniz.</string>
+    <string name="shipping_description2"> </string>
+
+    <!-- Contact -->
+    <string name="contact_title">İletişime geçin</string>
+    <string name="contact_email_name">İsminiz</string>
+    <string name="contact_email_subject">Konu</string>
+    <string name="contact_email_message">Mesaj</string>
+    <string name="contact_email_send_message">Mesaj gönderin</string>
 </resources>

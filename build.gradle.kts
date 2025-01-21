@@ -1,4 +1,5 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
+import kotlinx.html.link
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -14,7 +15,10 @@ version = "1.0-SNAPSHOT"
 kobweb {
     app {
         index {
-            description.set("Powered by Kobweb")
+            description.set("AhrarWood is a book stand producer company that has shipping service to USA, Canada, EU countries, UK. Gift for readers, book lover gift, book stands, book holder, gift for book lovers, book house, nightstand book holder")
+            head.add {
+                link(rel = "stylesheet", href = "/fonts/faces.css")
+            }
         }
     }
 }
@@ -41,7 +45,7 @@ kotlin {
             implementation("dev.gitlive:firebase-analytics:2.1.0")
         }
         jvmMain.dependencies {
-            compileOnly(libs.kobweb.api) // Provided by Kobweb backend at runtime
+            compileOnly(libs.kobweb.api)
         }
     }
 }

@@ -20,39 +20,45 @@ import com.varabyte.kobweb.compose.css.Transition
 import com.varabyte.kobweb.compose.css.TransitionProperty
 import com.varabyte.kobweb.compose.css.TransitionTimingFunction
 import com.varabyte.kobweb.compose.ui.graphics.Colors
+import com.varabyte.kobweb.core.rememberPageContext
+import org.akilincarslan.ahrarwood.constants.ImagePaths
 import org.jetbrains.compose.web.ExperimentalComposeWebApi
 
 @OptIn(ExperimentalComposeWebApi::class)
 @Composable
 fun HomeHeader(
+    currentPath: String,
     modifier: Modifier
 ) {
     var searchText = remember { mutableStateOf("") }
     var isSearchExpanded = remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
-
+    val ctx = rememberPageContext()
     Box(modifier = modifier
         .fillMaxWidth()
         .position(Position.Fixed)
         .zIndex(100)
-        .backgroundColor(Color.white),
+        .backgroundColor(Color.white)
+        .padding(leftRight = 96.px),
         contentAlignment = Alignment.TopCenter
     ) {
         Row(
             modifier = modifier
-                .margin(16.px)
+                .margin(topBottom = 16.px)
                 .align(Alignment.TopStart)
         ) {
-            Image("/banner_logo.jpg",
+            Image(ImagePaths.LOGO,
                 modifier = modifier
                     .width(216.px)
                     .height(72.px)
+                    .cursor(Cursor.Pointer)
+                    .onClick { ctx.router.navigateTo(PageRoutes.HOME) }
             )
         }
 
         Row(
             modifier = modifier
-                .margin(16.px)
+                .margin(topBottom = 16.px)
                 .align(Alignment.CenterEnd),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -113,7 +119,7 @@ fun HomeHeader(
                     contentAlignment = Alignment.Center
                 ) {
                     Image(
-                        src = "/search_icon.svg",
+                        src = ImagePaths.SEARCH_ICON,
                         modifier = modifier
                             .width(20.px)
                             .height(20.px)
@@ -121,17 +127,17 @@ fun HomeHeader(
                 }
             }
 
-            HomeSectionButton(modifier, Res.string.home, PageRoutes.HOME, onClick = {
-                Analytics.logEvent("homeClick")
+            HomeSectionButton(modifier, Res.string.home, PageRoutes.HOME, currentPath, onClick = {
+                ctx.router.navigateTo(it)
             })
-            HomeSectionButton(modifier, Res.string.book_stands, PageRoutes.BOOK_STANDS, onClick = {
+            HomeSectionButton(modifier, Res.string.book_stands, PageRoutes.BOOK_STANDS, currentPath, onClick = {
                 //ctx.router.navigateTo(it)
             })
-            HomeSectionButton(modifier, Res.string.about, PageRoutes.ABOUT, onClick = {
+            HomeSectionButton(modifier, Res.string.about, PageRoutes.ABOUT,currentPath, onClick = {
                 //ctx.router.navigateTo(it)
             })
-            HomeSectionButton(modifier, Res.string.contact, PageRoutes.CONTACT, onClick = {
-                //ctx.router.navigateTo(it)
+            HomeSectionButton(modifier, Res.string.contact, PageRoutes.CONTACT, currentPath, onClick = {
+                ctx.router.navigateTo(it)
             })
         }
     }
