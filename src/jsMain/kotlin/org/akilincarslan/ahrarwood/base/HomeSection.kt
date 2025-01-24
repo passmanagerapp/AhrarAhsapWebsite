@@ -7,6 +7,7 @@ import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.ScrollBehavior
+import com.varabyte.kobweb.compose.css.TextOverflow
 import com.varabyte.kobweb.compose.css.WhiteSpace
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -32,15 +33,19 @@ import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.id
 import com.varabyte.kobweb.compose.ui.modifiers.left
 import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.objectFit
 import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.onMouseLeave
 import com.varabyte.kobweb.compose.ui.modifiers.onMouseOver
+import com.varabyte.kobweb.compose.ui.modifiers.onTouchEnd
+import com.varabyte.kobweb.compose.ui.modifiers.onTouchStart
 import com.varabyte.kobweb.compose.ui.modifiers.overflow
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.position
 import com.varabyte.kobweb.compose.ui.modifiers.scrollBehavior
 import com.varabyte.kobweb.compose.ui.modifiers.size
+import com.varabyte.kobweb.compose.ui.modifiers.textOverflow
 import com.varabyte.kobweb.compose.ui.modifiers.whiteSpace
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.compose.ui.styleModifier
@@ -48,11 +53,13 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import kotlinx.browser.document
 import kotlinx.browser.window
 import org.akilincarslan.ahrarwood.constants.Constants
 import org.akilincarslan.ahrarwood.constants.ImagePaths
 import org.akilincarslan.ahrarwood.constants.PageRoutes
+import org.akilincarslan.ahrarwood.extensions.isMobileCompatible
 import org.akilincarslan.ahrarwood.models.Section
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -63,9 +70,12 @@ import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
 import org.w3c.dom.HTMLDivElement
 import org.w3c.dom.HTMLElement
+import org.w3c.dom.get
+import kotlin.math.abs
 
 @Composable
 fun HomeSection(
+    breakpoint: Breakpoint,
     modifier: Modifier
 ) {
     val ctx = rememberPageContext()
@@ -82,10 +92,10 @@ fun HomeSection(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(640.px)
+            .height(if (!breakpoint.isMobileCompatible()) 640.px else 320.px)
             .position(Position.Relative)
             .overflow(Overflow.Hidden)
-            .margin(topBottom = 64.px)
+            .margin(topBottom = if (!breakpoint.isMobileCompatible()) 64.px else 32.px)
     ) {
         Div(
             attrs = Modifier
@@ -104,7 +114,7 @@ fun HomeSection(
                         .fillMaxHeight()
                         .width(100.percent)
                         .flex(0,0,100.percent)
-                        .padding(leftRight = 96.px),
+                        .padding(leftRight = if (!breakpoint.isMobileCompatible()) 96.px else 16.px),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -115,14 +125,23 @@ fun HomeSection(
                     ) {
                         SpanText(section.title,
                             modifier = modifier
-                                .fontSize(48.px).margin(bottom = 12.px))
+                                .fontSize(if (!breakpoint.isMobileCompatible()) 48.px else 24.px).margin(bottom = 12.px))
                         SpanText(
                             section.description,
                             modifier = modifier
+                                .textOverflow(TextOverflow.Clip)
+                                .whiteSpace(WhiteSpace.PreWrap)
+                                .margin(bottom = 16.px)
+                                .styleModifier {
+                                    property("word-wrap", "break-word")
+                                    property("line-height", "1.5")
+                                }.apply {
+                                    if (breakpoint.isMobileCompatible())
+                                        fontSize(14.px)
+                                }
                         )
                         Box(modifier = Modifier.height(24.px))
 
-                        // Beautiful Order Now button
                         Box(
                             modifier = Modifier
                                 .backgroundColor(Colors.White)
@@ -159,13 +178,14 @@ fun HomeSection(
                                 text = section.buttonTitle,
                                 modifier = Modifier
                                     .color(Colors.SaddleBrown)
-                                    .fontSize(18.px)
+                                    .fontSize(if (!breakpoint.isMobileCompatible()) 18.px else 12.px)
                                     .styleModifier {
                                         property("font-weight", "600")
                                     }
                             )
                         }
                     }
+                    if (!breakpoint.isMobileCompatible())
                     Column(
                         modifier = modifier
                             .height(225.px)
@@ -222,4 +242,40 @@ fun HomeSection(
             }
         }
     }
+
+    if (breakpoint.isMobileCompatible()) {
+        var startX = remember { mutableStateOf(0f) }
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .position(Position.Absolute)
+                .onTouchStart { e ->
+                    startX.value = e.touches[0]?.clientX?.toFloat() ?: 0f
+                }
+                .onTouchEnd { e ->
+                    val endX = e.changedTouches[0]?.clientX?.toFloat() ?: 0f
+                    val diff = startX.value - endX
+
+                    if (abs(diff) > 50) { // Minimum swipe distance
+                        if (diff > 0 && currentIndex.value < banners.size - 1) {
+                            // Swipe left
+                            currentIndex.value++
+                        } else if (diff < 0 && currentIndex.value > 0) {
+                            // Swipe right
+                            currentIndex.value--
+                        }
+
+                        val container = document.getElementById(containerId) as? HTMLDivElement
+                        container?.scrollTo(
+                            x = (container.clientWidth * currentIndex.value).toDouble(),
+                            y = 0.0
+                        )
+                    }
+                }
+        ) {
+
+        }
+    }
+
 }

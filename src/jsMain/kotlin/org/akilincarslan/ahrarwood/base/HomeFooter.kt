@@ -10,6 +10,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import org.akilincarslan.ahrarwood.constants.Constants
 import org.akilincarslan.ahrarwood.constants.ImagePaths
 import org.akilincarslan.ahrarwood.utils.footerBgColor
@@ -17,21 +19,22 @@ import org.jetbrains.compose.web.css.px
 
 @Composable
 fun HomeFooter(
+    breakpoint: Breakpoint,
     modifier: Modifier
 ) {
     Box(
         modifier = modifier.fillMaxWidth()
-            .height(96.px)
-            .padding(leftRight = 36.px)
+            .height(if (breakpoint >= Breakpoint.MD) 96.px else 56.px)
+            .padding(leftRight = if (breakpoint >= Breakpoint.MD) 36.px else 16.px)
             .backgroundColor(footerBgColor),
     ) {
         SpanText(text = Res.string.footer_author, modifier = modifier.align(Alignment.CenterStart))
         Row(modifier = modifier.align(Alignment.CenterEnd)) {
-            AboutExternalIcon(modifier, ImagePaths.WHATSAPP, Constants.WHATSAPP_URL)
-            AboutExternalIcon(modifier, ImagePaths.ETSY, Constants.ETSY_SHOP_URL)
-            AboutExternalIcon(modifier, ImagePaths.INSTAGRAM, Constants.INSTAGRAM_SHOP_URL)
-            AboutExternalIcon(modifier, ImagePaths.YOUTUBE, Constants.YOUTUBE_SHOP_URL)
-            AboutExternalIcon(modifier, ImagePaths.PINTEREST, Constants.PINTEREST_SHOP_URL)
+            AboutExternalIcon(modifier,breakpoint, ImagePaths.WHATSAPP, Constants.WHATSAPP_URL)
+            AboutExternalIcon(modifier,breakpoint, ImagePaths.ETSY, Constants.ETSY_SHOP_URL)
+            AboutExternalIcon(modifier,breakpoint, ImagePaths.INSTAGRAM, Constants.INSTAGRAM_SHOP_URL)
+            AboutExternalIcon(modifier,breakpoint, ImagePaths.YOUTUBE, Constants.YOUTUBE_SHOP_URL)
+            AboutExternalIcon(modifier,breakpoint, ImagePaths.PINTEREST, Constants.PINTEREST_SHOP_URL)
         }
     }
 
