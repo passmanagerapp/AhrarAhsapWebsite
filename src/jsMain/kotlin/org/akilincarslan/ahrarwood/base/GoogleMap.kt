@@ -8,14 +8,18 @@ import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import org.akilincarslan.ahrarwood.constants.Constants
+import org.akilincarslan.ahrarwood.extensions.isMobileCompatible
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Iframe
 
 @Composable
 fun GoogleMap(breakpoint: Breakpoint,modifier: Modifier) {
     Box(
-        modifier = modifier.width(480.px).height(360.px)
+        modifier = modifier.width(480.px).height(if (!breakpoint.isMobileCompatible()) 360.px else 240.px)
             .margin(right = 30.px)
+            .apply {
+
+            }
 
     ) {
         Iframe(

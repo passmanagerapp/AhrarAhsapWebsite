@@ -10,6 +10,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.onMouseLeave
 import com.varabyte.kobweb.compose.ui.modifiers.onMouseOver
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.silk.components.graphics.Image
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.px
 import org.w3c.dom.HTMLElement
@@ -17,14 +19,15 @@ import org.w3c.dom.HTMLElement
 @Composable
 fun AboutExternalIcon(
     modifier: Modifier,
+    breakpoint: Breakpoint,
     iconPath: String,
     externalUrl: String
 ) {
 
     Image(src = iconPath, alt = iconPath.substringBefore(".png"), modifier =
     modifier
-        .size(24.px)
-        .margin(right = 36.px)
+        .size(if (breakpoint >= Breakpoint.MD) 24.px else 16.px)
+        .margin(right = if (breakpoint >= Breakpoint.MD) 36.px else 8.px)
         .cursor(Cursor.Pointer)
         .onClick {
             window.open(externalUrl, target = "_blank")

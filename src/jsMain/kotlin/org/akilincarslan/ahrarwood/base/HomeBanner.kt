@@ -46,22 +46,29 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import com.varabyte.kobweb.compose.ui.modifiers.onMouseEnter
 import com.varabyte.kobweb.compose.ui.modifiers.onMouseLeave
+import com.varabyte.kobweb.compose.ui.modifiers.onTouchEnd
+import com.varabyte.kobweb.compose.ui.modifiers.onTouchStart
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import kotlinx.coroutines.delay
 import org.akilincarslan.ahrarwood.constants.ImagePaths
+import org.w3c.dom.get
+import kotlin.math.abs
 import kotlin.time.Duration.Companion.seconds
 
 @Composable
 fun HomeBanner(
     modifier: Modifier
 ) {
-    val banners = listOf<String>(ImagePaths.BANNER1, ImagePaths.BANNER2, ImagePaths.BANNER3, ImagePaths.BANNER4)
+    val breakpoint = rememberBreakpoint()
+    val banners = listOf(ImagePaths.BANNER1, ImagePaths.BANNER2, ImagePaths.BANNER3, ImagePaths.BANNER4)
     val currentIndex = remember { mutableStateOf(0) }
     val containerId = "carouselContainer"
     val isHovered = remember { mutableStateOf(false) }
     
     LaunchedEffect(Unit) {
         while (true) {
-            delay(5.seconds)
+            delay(if (breakpoint >= Breakpoint.MD) 5.seconds else 15.seconds)
             if (!isHovered.value) {
                 currentIndex.value = (currentIndex.value + 1) % banners.size
                 val container = document.getElementById(containerId) as? HTMLDivElement
@@ -73,17 +80,14 @@ fun HomeBanner(
         }
     }
 
-    // Add cleanup when component is disposed
     DisposableEffect(Unit) {
-        onDispose {
-            // Cleanup if needed
-        }
+        onDispose { }
     }
 
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(420.px)
+            .height(if (breakpoint >= Breakpoint.MD) 420.px else 300.px)
             .position(Position.Relative)
             .overflow(Overflow.Hidden)
             .onMouseEnter { isHovered.value = true }
@@ -110,24 +114,25 @@ fun HomeBanner(
                         src = it,
                         modifier = Modifier
                             .fillMaxSize()
-                            .objectFit(ObjectFit.Cover),
+                            .objectFit(if (breakpoint >= Breakpoint.MD) ObjectFit.Cover else ObjectFit.Contain),
                         alt = Constants.BANNER_ALT
                     )
                 }
             }
         }
 
+        // Navigation dots
         Row(
             modifier = Modifier
                 .position(Position.Absolute)
-                .bottom(8.px)
-                .left(16.px)
-                .gap(8.px)
+                .bottom(if (breakpoint >= Breakpoint.MD) 16.px else 8.px)
+                .left(if (breakpoint >= Breakpoint.MD) 24.px else 12.px)
+                .gap(if (breakpoint >= Breakpoint.MD) 12.px else 8.px)
         ) {
             repeat(banners.size) { index ->
                 Div(
                     attrs = Modifier
-                        .size(12.px)
+                        .size(if (breakpoint >= Breakpoint.MD) 12.px else 8.px)
                         .backgroundColor(if (index == currentIndex.value) Colors.White else Colors.LightGray)
                         .borderRadius(50.percent)
                         .cursor(Cursor.Pointer)
@@ -142,6 +147,42 @@ fun HomeBanner(
                             }
                         })
                 )
+            }
+        }
+
+        // Optional: Add touch swipe support for mobile
+        if (breakpoint < Breakpoint.MD) {
+            var startX = remember { mutableStateOf(0f) }
+
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .position(Position.Absolute)
+                    .onTouchStart { e ->
+                        startX.value = e.touches[0]?.clientX?.toFloat() ?: 0f
+                    }
+                    .onTouchEnd { e ->
+                        val endX = e.changedTouches[0]?.clientX?.toFloat() ?: 0f
+                        val diff = startX.value - endX
+
+                        if (abs(diff) > 50) { // Minimum swipe distance
+                            if (diff > 0 && currentIndex.value < banners.size - 1) {
+                                // Swipe left
+                                currentIndex.value++
+                            } else if (diff < 0 && currentIndex.value > 0) {
+                                // Swipe right
+                                currentIndex.value--
+                            }
+
+                            val container = document.getElementById(containerId) as? HTMLDivElement
+                            container?.scrollTo(
+                                x = (container.clientWidth * currentIndex.value).toDouble(),
+                                y = 0.0
+                            )
+                        }
+                    }
+            ) {
+
             }
         }
     }
