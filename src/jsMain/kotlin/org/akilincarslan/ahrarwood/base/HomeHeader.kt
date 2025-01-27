@@ -50,7 +50,7 @@ fun HomeHeader(
         .position(Position.Fixed)
         .zIndex(100)
         .backgroundColor(Color.white)
-        .padding(leftRight = if (breakpoint >= Breakpoint.MD) 96.px else 16.px),
+        .padding(leftRight = if (breakpoint >= Breakpoint.MD) 36.px else 16.px),
         contentAlignment = Alignment.TopCenter
     ) {
         Row(
@@ -211,6 +211,9 @@ fun SearchBar(
     })
     HomeSectionButton(modifier, Res.string.book_stands, PageRoutes.BOOK_STANDS, currentPath, onClick = {
         //ctx.router.navigateTo(it)
+    })
+    HomeSectionButton(modifier, Res.string.create_library, PageRoutes.CREATE_MINIATURE_LIBRARY, currentPath, onClick = {
+        ctx.router.navigateTo(it)
     })
     HomeSectionButton(modifier, Res.string.about, PageRoutes.ABOUT,currentPath, onClick = {
         //ctx.router.navigateTo(it)

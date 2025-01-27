@@ -1,5 +1,7 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import kotlinx.html.link
+import kotlinx.html.script
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -7,6 +9,7 @@ plugins {
     alias(libs.plugins.kobweb.application)
     alias(libs.plugins.kobwebx.markdown)
     alias(libs.plugins.libres)
+    kotlin("plugin.serialization") version "1.9.0"
 }
 
 group = "org.akilincarslan.ahrarwood"
@@ -18,6 +21,15 @@ kobweb {
             description.set("AhrarWood is a book stand producer company that has shipping service to USA, Canada, EU countries, UK. Gift for readers, book lover gift, book stands, book holder, gift for book lovers, book house, nightstand book holder")
             head.add {
                 link(rel = "stylesheet", href = "/fonts/faces.css")
+                script(src = "https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/viewer3D.min.js") {}
+                link(
+                    type = "text/css",
+                    rel = "stylesheet",
+                    href = "https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/style.min.css"
+                )
+                script {
+                    src = "js/model.js"
+                }
             }
         }
     }
@@ -26,7 +38,15 @@ kobweb {
 kotlin {
     configAsKobwebApplication("ahrarwood", includeServer = true)
     js(IR) {
-        browser()
+        useCommonJs()
+        browser {
+            commonWebpackConfig {
+                cssSupport {
+                    enabled.set(true)
+                }
+            }
+        }
+        binaries.executable()
     }
     sourceSets {
         commonMain.dependencies {
@@ -43,7 +63,16 @@ kotlin {
             implementation(project(":worker"))
             implementation("dev.gitlive:firebase-installations:2.1.0")
             implementation("dev.gitlive:firebase-analytics:2.1.0")
+            implementation("io.ktor:ktor-client-core:3.0.3")
+            implementation("io.ktor:ktor-client-js:3.0.3")
+            implementation("io.ktor:ktor-client-logging:3.0.3")
+            implementation("io.ktor:ktor-client-content-negotiation:3.0.3")
+            implementation("io.ktor:ktor-serialization-kotlinx-json:3.0.3")
+            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+            implementation(npm("three", "0.172.0"))
+
         }
+
         jvmMain.dependencies {
             compileOnly(libs.kobweb.api)
         }
