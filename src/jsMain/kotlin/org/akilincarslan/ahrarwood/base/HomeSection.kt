@@ -85,7 +85,7 @@ fun HomeSection(
         Section(title = Res.string.section2_title,Res.string.section2_desc,
             buttonTitle = Res.string.section2_button, navPath = null, imagePath = ImagePaths.SECTION2),
         Section(title = Res.string.section3_title,Res.string.section3_desc,
-            buttonTitle = Res.string.section3_button, navPath = null, imagePath = ImagePaths.SECTION3),
+            buttonTitle = Res.string.section3_button, navPath = PageRoutes.CREATE_MINIATURE_LIBRARY, imagePath = ImagePaths.SECTION3),
     )
     val currentIndex = remember { mutableStateOf(0) }
     val containerId = "sectionContainer"
@@ -155,10 +155,10 @@ fun HomeSection(
                                     property("transform", "scale(1)")
                                 }
                                 .onClick {
-                                    /*section.navPath?.let { path ->
+                                    section.navPath?.let { path ->
                                         ctx.router.navigateTo(path)
-                                    }*/
-                                    window.open(Constants.ETSY_SHOP_URL, target = "_blank")
+                                    }
+                                 //   window.open(Constants.ETSY_SHOP_URL, target = "_blank")
                                 }
                                 // Hover states
                                 .onMouseOver {

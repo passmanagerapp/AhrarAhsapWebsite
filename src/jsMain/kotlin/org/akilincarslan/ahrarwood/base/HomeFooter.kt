@@ -25,7 +25,7 @@ fun HomeFooter(
     Box(
         modifier = modifier.fillMaxWidth()
             .height(if (breakpoint >= Breakpoint.MD) 96.px else 56.px)
-            .padding(leftRight = if (breakpoint >= Breakpoint.MD) 36.px else 16.px)
+            .padding(leftRight = if (breakpoint >= Breakpoint.MD) 96.px else 16.px)
             .backgroundColor(footerBgColor),
     ) {
         SpanText(text = Res.string.footer_author, modifier = modifier.align(Alignment.CenterStart))
