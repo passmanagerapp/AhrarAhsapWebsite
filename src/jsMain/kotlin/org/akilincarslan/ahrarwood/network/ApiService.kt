@@ -3,8 +3,10 @@ package org.akilincarslan.ahrarwood.network
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.statement.HttpResponse
+import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.URLProtocol
+import io.ktor.http.headers
 import io.ktor.http.path
 import org.akilincarslan.ahrarwood.network.model.SearchResult
 
@@ -21,6 +23,9 @@ object ApiService {
                     path("search.json")
                     parameters.append("author",author)
                     parameters.append("fields","author_name,first_publish_year,isbn,publisher,title")
+                    headers {
+                        append(HttpHeaders.UserAgent, "AhrarAhsap/1.0 (passmanagerapplication@gmail.com)")
+                    }
                 }
             }
             if (response.status == HttpStatusCode.OK) {
