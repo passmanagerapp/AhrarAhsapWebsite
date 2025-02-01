@@ -47,4 +47,5 @@
     <string name="ok">Ok</string>
     <string name="remove">Entfernen</string>
     <string name="search_author">Autor suchen</string>
+    <string name="result_found">Ergebnis gefunden</string>
 </resources>

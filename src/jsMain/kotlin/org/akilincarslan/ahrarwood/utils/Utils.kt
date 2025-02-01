@@ -28,8 +28,10 @@ object Utils {
         pdf.addFileToVFS("Roboto-Regular-normal.ttf", base64Font);
         pdf.addFont("Roboto-Regular-normal.ttf", "Roboto-Regular", "normal");
         pdf.setFont("Roboto-Regular", "normal")
-        val imageUrl = "http://localhost:8080/banner_logo.png"
-        pdf.addImage(imageUrl, "PNG", 10.0, 10.0, 50.0, 20.0,null,null)
+        runCatching {
+            val imageUrl = "https://ahrarahsap.com/banner_logo.png"
+            pdf.addImage(imageUrl, "PNG", 10.0, 10.0, 50.0, 20.0,null,null)
+        }
 
         pdf.setFontSize(12)
 

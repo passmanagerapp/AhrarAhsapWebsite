@@ -9,28 +9,20 @@ import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
-import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.silk.components.icons.fa.FaCopy
 import com.varabyte.kobweb.silk.components.text.SpanText
-import org.akilincarslan.ahrarwood.extensions.copyToClipboard
 import org.jetbrains.compose.web.css.px
 
 @Composable
-fun TwoWeightText(
+fun TwoWeightText2(
     modifier: Modifier,
+    textBold: String,
     textNormal: String,
-    textBold: String
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
     ) {
-        SpanText(
-            text = textNormal,
-            modifier = modifier
-                .color(Colors.Black)
-                .fontWeight(FontWeight.Normal)
-        )
         SpanText(
             text = textBold,
             modifier = modifier
@@ -38,10 +30,11 @@ fun TwoWeightText(
                 .fontWeight(FontWeight.Bold)
                 .margin(left = 1.px, right = 6.px)
         )
-        FaCopy(
-            modifier = modifier.onClick {
-                copyToClipboard(textBold)
-            }
+        SpanText(
+            text = textNormal,
+            modifier = modifier
+                .color(Colors.Black)
+                .fontWeight(FontWeight.Normal)
         )
     }
 }

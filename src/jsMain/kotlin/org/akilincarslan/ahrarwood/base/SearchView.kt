@@ -21,12 +21,15 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.components.forms.TextInput
 import com.varabyte.kobweb.silk.components.graphics.Image
+import com.varabyte.kobweb.silk.components.icons.fa.FaCaretDown
 import com.varabyte.kobweb.silk.components.icons.fa.FaSpinner
 import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.akilincarslan.ahrarwood.constants.ImagePaths
+import org.akilincarslan.ahrarwood.extensions.isMobileCompatible
 import org.akilincarslan.ahrarwood.network.model.Doc
 import org.jetbrains.compose.web.css.*
 import org.w3c.dom.HTMLElement
@@ -34,6 +37,7 @@ import org.w3c.dom.HTMLElement
 @Composable
 fun SearchView(
     modifier: Modifier,
+    breakpoint: Breakpoint,
     scope: CoroutineScope,
     isSearchExpanded: Boolean,
     searchText: String,
@@ -47,6 +51,7 @@ fun SearchView(
     onPageChange: (Int) -> Unit = {}
 ) {
     val isLoading = remember { mutableStateOf(false) }
+    var isCollapse = remember { mutableStateOf(false) }
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -59,7 +64,7 @@ fun SearchView(
             modifier = modifier
                 .width(if (isSearchExpanded) 360.px else 40.px)
                 .height(40.px)
-                .margin(topBottom = 6.px)
+                .margin(topBottom = if (!breakpoint.isMobileCompatible()) 6.px else 2.px)
                 .position(Position.Absolute)  // Fixed position
                 .right(0.px)  // Align to right
                 .border {
@@ -97,7 +102,13 @@ fun SearchView(
                                     isLoading.value = true
                                 }
                             }
-                        },
+                        }
+                        .onClick {
+                            if (isCollapse.value && searchResults.isNotEmpty()) {
+                                isCollapse.value = false
+                            }
+                        }
+                    ,
                     focusBorderColor = Colors.White
                 )
             }
@@ -142,7 +153,7 @@ fun SearchView(
         }
 
         // Results dropdown
-        if (isSearchExpanded && searchResults.isNotEmpty()) {
+        if (isSearchExpanded && searchResults.isNotEmpty() && !isCollapse.value) {
             isLoading.value = false
             Box(
                 modifier = Modifier
@@ -162,6 +173,17 @@ fun SearchView(
                         .fillMaxWidth()
                         .padding(8.px)
                 ) {
+                    Row(
+                        modifier = modifier.fillMaxWidth()
+                            .onClick {
+                                isCollapse.value= !isCollapse.value
+                            }
+                    ) {
+                        TwoWeightText2(modifier,"${searchResults.size}",Res.string.result_found)
+                        FaCaretDown(
+                            modifier = modifier.margin(left = 6.px)
+                        )
+                    }
                     searchResults.forEach { result ->
                         Row(
                             modifier = Modifier

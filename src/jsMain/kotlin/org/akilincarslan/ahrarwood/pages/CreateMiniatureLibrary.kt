@@ -83,31 +83,35 @@ fun CreateMiniatureLibraryPage(
         HomeHeader(PageRoutes.CREATE_MINIATURE_LIBRARY,modifier)
         Box(modifier = modifier
             .fillMaxSize()
-            .padding(top = 104.px, bottom = 96.px)
+            .padding(top = if (!breakpoint.isMobileCompatible()) 104.px else 84.px, bottom = 96.px)
         ) {
             Box(
                 modifier = modifier
                     .fillMaxWidth()
-                    .height(160.px)
-                    .padding(leftRight = 96.px)
+                    .height(if (!breakpoint.isMobileCompatible()) 160.px else 120.px)
+                    .padding(leftRight = if (!breakpoint.isMobileCompatible()) 96.px else 16.px)
                     .align(Alignment.TopCenter)
                     .backgroundColor(color = primaryColor),
             ) {
-                SpanText(Res.string.library_header_title, modifier = modifier.fontSize(36.px).fontWeight(FontWeight.Bold)
+                SpanText(Res.string.library_header_title, modifier = modifier
+                    .fontSize(if (!breakpoint.isMobileCompatible()) 36.px else 16.px)
+                    .fontWeight(FontWeight.Bold)
                     .color(Colors.White)
-                    .align(Alignment.CenterStart))
+                    .align(if (!breakpoint.isMobileCompatible()) Alignment.CenterStart else Alignment.TopStart))
                 SpanText(Res.string.library_header_desc,
-                    modifier = modifier.fontSize(16.px).fontWeight(FontWeight.Thin).color(Colors.White)
-                        .align(Alignment.BottomStart)
-                        .margin(bottom = 8.px))
+                    modifier = modifier
+                        .fontSize(if (!breakpoint.isMobileCompatible()) 16.px else 12.px)
+                        .fontWeight(FontWeight.Thin).color(Colors.White)
+                        .align(if (!breakpoint.isMobileCompatible()) Alignment.BottomStart else Alignment.TopStart)
+                        .margin(bottom = 8.px, top = if (!breakpoint.isMobileCompatible()) 0.px else 20.px))
                 Column(modifier = modifier.fillMaxWidth()
-                    .margin(leftRight = 36.px)
-                    .align(Alignment.CenterEnd),
+                    .align(if (!breakpoint.isMobileCompatible()) Alignment.CenterEnd else Alignment.Center),
                     horizontalAlignment = Alignment.End) {
                     SpanText(text = "${selectedBooks.value.size}/60",
-                        modifier = modifier.color(Colors.White).fontSize(20.px))
+                        modifier = modifier.color(Colors.White).fontSize(if (!breakpoint.isMobileCompatible()) 20.px else 14.px))
                     SearchView(
                         modifier = modifier,
+                        breakpoint = breakpoint,
                         scope = scope,
                         isSearchExpanded = isSearchExpanded.value,
                         searchText = searchText.value,

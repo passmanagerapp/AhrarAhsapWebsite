@@ -2,6 +2,7 @@ package org.akilincarslan.ahrarwood.extensions
 
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import io.ktor.util.encodeBase64
+import kotlinx.browser.window
 import kotlin.random.Random
 
 fun Breakpoint.isMobileCompatible() : Boolean {
@@ -25,6 +26,15 @@ fun executeDynamicJs(code: String) : String {
 fun getRandomHexColor(): Int {
     return Random.nextInt(0x000000, 0xFFFFFF)
 }
+
+fun copyToClipboard(text: String) {
+    runCatching {
+        window.navigator.clipboard.writeText(text)
+            .then { println("Copied to clipboard: $text") }
+            .catch { println("Failed to copy text") }
+    }
+}
+
 
 fun Int?.ignoreNull() : Int = this ?: -1
 fun String?.ignoreNull() : String = this ?: "-"
