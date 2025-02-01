@@ -42,6 +42,7 @@ import org.akilincarslan.ahrarwood.base.threemodel.Scene
 import org.akilincarslan.ahrarwood.base.threemodel.setupObjSceneWithGlft
 import org.akilincarslan.ahrarwood.constants.PageRoutes
 import org.akilincarslan.ahrarwood.extensions.getRandomHexColor
+import org.akilincarslan.ahrarwood.extensions.ignoreNull
 import org.akilincarslan.ahrarwood.extensions.isMobileCompatible
 import org.akilincarslan.ahrarwood.models.BookDialogModel
 import org.akilincarslan.ahrarwood.models.BookListModel
@@ -75,6 +76,7 @@ fun CreateMiniatureLibraryPage(
     var isLoading = remember { mutableStateOf(false) }
     var isDialogOpen = remember { mutableStateOf(BookDialogModel()) }
     var scene = remember { mutableStateOf<Scene?>(null) }
+    val removedItemIdList = remember { mutableStateOf< List<String>>(emptyList()) }
 
     Box(modifier = modifier.fillMaxSize()) {
         HomeHeader(PageRoutes.CREATE_MINIATURE_LIBRARY,modifier)
@@ -127,21 +129,22 @@ fun CreateMiniatureLibraryPage(
                         },
                         searchResults = response.value?.docs ?: emptyList(),
                         onResultClick = { doc ->
-                            if (selectedBooks.value.size == 60 && selectedBooks.value.map { it.isbn }.contains(doc.isbn?.first()))
+                            if (selectedBooks.value.size == 60)
                                 return@SearchView
                             if (!doc.isbn.isNullOrEmpty()) {
                                 if (selectedBooks.value.isNotEmpty() && selectedBooks.value.map { it.isbn }.contains(doc.isbn.first())) {
-                                    val index = selectedBooks.value.size
-                                    selectedBooks.value = selectedBooks.value - BookListModel("book$index",doc.isbn.first(),
-                                        doc.title,doc.author_name.first(),doc.publisher?.firstOrNull(),doc.firstPublishYear)
                                     return@SearchView
                                 } else if (!doc.isbn.isEmpty()) {
                                     val randomColor = getRandomHexColor()
                                     val index = selectedBooks.value.size + 1
-                                    selectedBooks.value = selectedBooks.value + BookListModel("book$index",doc.isbn.first()
+                                    val bookId = if (removedItemIdList.value.isNotEmpty()) removedItemIdList.value.last().ignoreNull() else "book$index"
+                                    selectedBooks.value = selectedBooks.value + BookListModel(bookId,doc.isbn.first()
                                             ,doc.title,doc.author_name.first(),doc.publisher?.firstOrNull(),doc.firstPublishYear)
-                                    val targetObject = scene.value?.getObjectByName("book${index}")
+                                    val targetObject = scene.value?.getObjectByName(bookId)
                                     targetObject?.material?.asDynamic()?.color?.setHex(randomColor)
+                                    if (removedItemIdList.value.isNotEmpty()) {
+                                        removedItemIdList.value = removedItemIdList.value - bookId
+                                    }
                                 }
                             }
                         },
@@ -249,6 +252,7 @@ fun CreateMiniatureLibraryPage(
                     val book = selectedBooks.value.firstOrNull { it.id == id }
                     if (book == null)
                         return@Dialog
+                    removedItemIdList.value = removedItemIdList.value + book.id
                     selectedBooks.value = selectedBooks.value - book
                     isDialogOpen.value = BookDialogModel()
                     val targetObject = scene.value?.getObjectByName(id)

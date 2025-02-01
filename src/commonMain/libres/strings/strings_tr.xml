@@ -37,4 +37,15 @@
     <string name="contact_email_subject">Konu</string>
     <string name="contact_email_message">Mesaj</string>
     <string name="contact_email_send_message">Mesaj gönderin</string>
+
+    <!-- Create library -->
+    <string name="library_header_title">Kütüphanenizi oluşturun</string>
+    <string name="library_header_desc">*Eklediğiniz kitapların sırası önemli değildir</string>
+    <string name="library_header_desc2">Sipariş ver butonuna tıklayın ve benzersiz kodunuzu Etsy'deki "Kişiselleştirme" bölümüne yapıştırın.</string>
+    <string name="copy_your_id">Benzersiz kitap listesi kodunu kopyalayın:</string>
+    <string name="download_book_list">Kitap listesini indir</string>
+    <string name="ok">Tamam</string>
+    <string name="remove">Kaldır</string>
+    <string name="search_author">Yazar ara</string>
+
 </resources>
