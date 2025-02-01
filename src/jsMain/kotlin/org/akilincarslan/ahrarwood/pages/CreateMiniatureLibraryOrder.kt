@@ -29,6 +29,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.core.Page
+import com.varabyte.kobweb.core.rememberPageContext
+import com.varabyte.kobweb.navigation.UpdateHistoryMode
 import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.text.SpanText
@@ -58,13 +60,21 @@ import kotlin.random.Random
 fun CreateMiniatureLibraryOrderPage(
     modifier: Modifier = Modifier
 ) {
+    val ctx = rememberPageContext()
     val breakpoint = rememberBreakpoint()
     var items = remember { mutableStateOf<List<BookListModel>>(emptyList()) }
-    val uniqueId = Random.nextInt(100000,999999)
-
+    var uniqueId = remember { mutableStateOf<String>("") }
     LaunchedEffect(Unit) {
-        SharedViewModel.bookItems.onEach { items.value = it }.collect()
+        SharedViewModel.bookItems.onEach {
+            items.value = it.second
+            uniqueId.value = it.first
+        }.collect()
     }
+    val list = items.value
+    if (uniqueId.value.isNotEmpty())
+        Utils.createBookListPdf(list,uniqueId.value,false)
+    else
+        ctx.router.navigateTo(PageRoutes.CREATE_MINIATURE_LIBRARY, updateHistoryMode = UpdateHistoryMode.REPLACE)
     Box(modifier = Modifier.fillMaxSize()) {
         HomeHeader(PageRoutes.CREATE_MINIATURE_LIBRARY, modifier)
 
@@ -81,7 +91,7 @@ fun CreateMiniatureLibraryOrderPage(
                     .align(Alignment.TopCenter)
                     .backgroundColor(color = primaryColor),
             ) {
-                SpanText(Res.string.library_header_title, modifier = modifier.fontSize(36.px).fontWeight(FontWeight.Bold)
+                SpanText(Res.string.library_header_title2, modifier = modifier.fontSize(36.px).fontWeight(FontWeight.Bold)
                     .color(Colors.White)
                     .align(Alignment.CenterStart))
                 SpanText(Res.string.library_header_desc2,
@@ -106,7 +116,7 @@ fun CreateMiniatureLibraryOrderPage(
                 ) {
                     Image(ImagePaths.SUCCESS,
                         modifier = modifier.size(124.px))
-                    TwoWeightText(modifier,Res.string.copy_your_id,"AW-$uniqueId")
+                    TwoWeightText(modifier,Res.string.copy_your_id, uniqueId.value)
                     Button(
                         onClick = {
                          window.open(Constants.ETSY_MINIBOOK_URL, target = "_blank")
@@ -153,7 +163,7 @@ fun CreateMiniatureLibraryOrderPage(
                         text = Res.string.download_book_list,
                         onClick = {
                             val list = items.value
-                            Utils.createBookListPdf(list,"AW-$uniqueId")
+                            Utils.createBookListPdf(list, uniqueId.value,true)
                         }
                     )
                 }

@@ -9,6 +9,7 @@ import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.silk.components.icons.fa.FaCopy
 import com.varabyte.kobweb.silk.components.text.SpanText
 import org.jetbrains.compose.web.css.px
 
@@ -33,7 +34,8 @@ fun TwoWeightText(
             modifier = modifier
                 .color(Colors.Black)
                 .fontWeight(FontWeight.Bold)
-                .margin(left = 1.px)
+                .margin(left = 1.px, right = 6.px)
         )
+        FaCopy()
     }
 }

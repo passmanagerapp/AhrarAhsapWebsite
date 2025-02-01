@@ -22,7 +22,7 @@ object Utils {
     }
 
     @OptIn(DelicateCoroutinesApi::class)
-    fun createBookListPdf(books: List<BookListModel>,id: String) {
+    fun createBookListPdf(books: List<BookListModel>,id: String,download: Boolean) {
         val pdf = jsPDF()
         val base64Font = fontUnicode
         pdf.addFileToVFS("Roboto-Regular-normal.ttf", base64Font);
@@ -45,10 +45,13 @@ object Utils {
             pdf.text("${index+1}. ${book.title},${book.author},${book.publisher.ignoreNull()},${book.publishYear.ignoreNull()}", margin, yPosition)
             yPosition += lineHeight
         }
-        pdf.save("booklist_$id.pdf")
-        val blob = pdf.output("blob") as Blob
-        MainScope().launch {
-            uploadPdfToStorage(blob,id)
+        if (download)
+            pdf.save("booklist_$id.pdf")
+        else {
+            val blob = pdf.output("blob") as Blob
+            MainScope().launch {
+                uploadPdfToStorage(blob,id)
+            }
         }
     }
 

@@ -7,10 +7,10 @@ import org.akilincarslan.ahrarwood.models.BookListModel
 import org.akilincarslan.ahrarwood.network.model.Doc
 
 object SharedViewModel {
-    private val _bookItems = MutableStateFlow<List<BookListModel>>(emptyList())
-    val bookItems: StateFlow<List<BookListModel>> = _bookItems
+    private val _bookItems = MutableStateFlow< Pair<String,List<BookListModel>>>(Pair("",emptyList()))
+    val bookItems: StateFlow<Pair<String,List<BookListModel>>> = _bookItems
 
-    fun setItems(newItems: List<BookListModel>) {
+    fun setItems(newItems: Pair<String,List<BookListModel>>) {
         _bookItems.value = newItems
     }
 }

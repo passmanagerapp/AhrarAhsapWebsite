@@ -40,6 +40,7 @@
 
     <!-- Create library -->
     <string name="library_header_title">Kütüphanenizi oluşturun</string>
+    <string name="library_header_title2">Kitap listeniz oluşturuldu, şimdi sipariş zamanı!</string>
     <string name="library_header_desc">*Eklediğiniz kitapların sırası önemli değildir</string>
     <string name="library_header_desc2">Sipariş ver butonuna tıklayın ve benzersiz kodunuzu Etsy'deki "Kişiselleştirme" bölümüne yapıştırın.</string>
     <string name="copy_your_id">Benzersiz kitap listesi kodunu kopyalayın:</string>

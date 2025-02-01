@@ -40,6 +40,7 @@
 
     <!-- Create library -->
     <string name="library_header_title">Create your library</string>
+    <string name="library_header_title2">Your book list created, now it is time to order!</string>
     <string name="library_header_desc">Order of books not important</string>
     <string name="library_header_desc2">Click order button and paste your unique to "Personalization" section at Etsy.</string>
     <string name="copy_your_id">Copy your unique book list id:</string>

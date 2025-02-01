@@ -58,6 +58,7 @@ import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgb
 import org.jetbrains.compose.web.dom.Div
 import org.w3c.dom.HTMLElement
+import kotlin.random.Random
 
 
 @Page
@@ -189,7 +190,8 @@ fun CreateMiniatureLibraryPage(
 
             Button(
                 onClick = {
-                    SharedViewModel.setItems(selectedBooks.value)
+                    val uniqueId = Random.nextInt(100000,999999)
+                    SharedViewModel.setItems(Pair("AW-$uniqueId",selectedBooks.value))
                     ctx.router.navigateTo(PageRoutes.CREATE_MINIATURE_LIBRARY_ORDER)
                 },
                 modifier = Modifier

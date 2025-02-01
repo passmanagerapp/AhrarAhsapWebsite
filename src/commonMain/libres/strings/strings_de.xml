@@ -39,6 +39,7 @@
 
     <!-- Create library -->
     <string name="library_header_title">Erstellen Sie Ihre Bibliothek</string>
+    <string name="library_header_title2">Ihre Buchliste wurde erstellt, jetzt ist es Zeit, zu bestellen!</string>
     <string name="library_header_desc">*Die Reihenfolge der Bücher ist nicht wichtig</string>
     <string name="library_header_desc2">Klicken Sie auf die Schaltfläche "Bestellen" und fügen Sie Ihre eindeutige ID im Abschnitt "Personalisierung" bei Etsy ein.</string>
     <string name="copy_your_id">Kopieren Sie Ihre eindeutige Buchlisten-ID:</string>
