@@ -50,7 +50,9 @@ object Utils {
         else {
             val blob = pdf.output("blob") as Blob
             MainScope().launch {
-                uploadPdfToStorage(blob,id)
+                runCatching {
+                    uploadPdfToStorage(blob,id)
+                }
             }
         }
     }

@@ -69,14 +69,14 @@ fun CreateMiniatureLibraryOrderPage(
         SharedViewModel.bookItems.onEach {
             items.value = it.second
             uniqueId.value = it.first
-        }.collect()
+        }.collect {
+            if (uniqueId.value.isEmpty())
+                ctx.router.navigateTo(PageRoutes.CREATE_MINIATURE_LIBRARY, updateHistoryMode = UpdateHistoryMode.REPLACE)
+        }
     }
     val list = items.value
     if (uniqueId.value.isNotEmpty())
         Utils.createBookListPdf(list,uniqueId.value,false)
-    else
-        ctx.router.navigateTo(PageRoutes.CREATE_MINIATURE_LIBRARY, updateHistoryMode = UpdateHistoryMode.REPLACE)
-    Analytics.logEvent("createLibrary ${items.value.size}")
     Box(modifier = Modifier.fillMaxSize()) {
         HomeHeader(PageRoutes.CREATE_MINIATURE_LIBRARY, modifier)
 
