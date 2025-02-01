@@ -1,6 +1,7 @@
 package org.akilincarslan.ahrarwood.utils
 
 import dev.gitlive.firebase.Firebase
+import dev.gitlive.firebase.storage.FirebaseStorageMetadata
 import dev.gitlive.firebase.storage.storage
 import kotlinx.browser.window
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -52,8 +53,10 @@ object Utils {
         else {
             val blob = pdf.output("blob") as Blob
             MainScope().launch {
-                runCatching {
+                try {
                     uploadPdfToStorage(blob,id)
+                } catch (e: Exception) {
+                    console.log("ex: ${e.message}")
                 }
             }
         }
@@ -62,7 +65,9 @@ object Utils {
     suspend fun uploadPdfToStorage(blob: Blob,id: String) {
         val fb =Firebase.storage(FirebaseConfig.STORAGE_BUCKET)
         val file = blobToFile(blob,"$id.pdf")
-        fb.reference.putFile(file,null)
+        fb.reference.putFile(file, metadata = FirebaseStorageMetadata(
+            contentType = "application/pdf"
+        ))
     }
 
     fun blobToFile(blob: Blob, fileName: String): File {
