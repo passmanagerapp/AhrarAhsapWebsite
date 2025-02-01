@@ -6,6 +6,7 @@
     <string name="contact">Kontakt</string>
     <string name="book_stand">Bücherständer</string>
     <string name="search">Suchen</string>
+    <string name="create_library">Bibliothek erstellen</string>
 
     <!-- Footer -->
     <string name="footer_author">Copyright 2025 dev0029</string>
@@ -35,4 +36,16 @@
     <string name="contact_email_subject">Thema</string>
     <string name="contact_email_message">Nachricht</string>
     <string name="contact_email_send_message">Nachricht senden</string>
+
+    <!-- Create library -->
+    <string name="library_header_title">Erstellen Sie Ihre Bibliothek</string>
+    <string name="library_header_title2">Ihre Buchliste wurde erstellt, jetzt ist es Zeit, zu bestellen!</string>
+    <string name="library_header_desc">*Die Reihenfolge der Bücher ist nicht wichtig</string>
+    <string name="library_header_desc2">Klicken Sie auf die Schaltfläche "Bestellen" und fügen Sie Ihre eindeutige ID im Abschnitt "Personalisierung" bei Etsy ein.</string>
+    <string name="copy_your_id">Kopieren Sie Ihre eindeutige Buchlisten-ID:</string>
+    <string name="download_book_list">Buchliste herunterladen</string>
+    <string name="ok">Ok</string>
+    <string name="remove">Entfernen</string>
+    <string name="search_author">Autor suchen</string>
+    <string name="result_found">Ergebnis gefunden</string>
 </resources>

@@ -6,6 +6,7 @@
     <string name="contact">Contact</string>
     <string name="book_stands">Book stand</string>
     <string name="search">Search</string>
+    <string name="create_library">Create library</string>
 
     <!-- Footer -->
     <string name="footer_author">Copyright 2025 dev0029</string>
@@ -36,4 +37,16 @@
     <string name="contact_email_subject">Subject</string>
     <string name="contact_email_message">Message</string>
     <string name="contact_email_send_message">Send message</string>
+
+    <!-- Create library -->
+    <string name="library_header_title">Create your library</string>
+    <string name="library_header_title2">Your book list created, now it is time to order!</string>
+    <string name="library_header_desc">*Order of books not important</string>
+    <string name="library_header_desc2">Click order button and paste your unique to "Personalization" section at Etsy.</string>
+    <string name="copy_your_id">Copy your unique book list id:</string>
+    <string name="download_book_list">Download book list</string>
+    <string name="ok">Ok</string>
+    <string name="remove">Remove</string>
+    <string name="search_author">Search author</string>
+    <string name="result_found">result found</string>
 </resources>
