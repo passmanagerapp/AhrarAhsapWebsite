@@ -34,6 +34,7 @@ object ApiClient {
         defaultRequest {
             headers {
                 append(HttpHeaders.Accept, "*/*")
+                append(HttpHeaders.UserAgent, "AhrarAhsap/1.0 (passmanagerapplication@gmail.com)")
             }
         }
 
