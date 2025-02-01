@@ -46,6 +46,7 @@ import org.akilincarslan.ahrarwood.constants.Constants
 import org.akilincarslan.ahrarwood.constants.ImagePaths
 import org.akilincarslan.ahrarwood.constants.PageRoutes
 import org.akilincarslan.ahrarwood.extensions.isMobileCompatible
+import org.akilincarslan.ahrarwood.firebase.Analytics
 import org.akilincarslan.ahrarwood.models.BookListModel
 import org.akilincarslan.ahrarwood.utils.SharedViewModel
 import org.akilincarslan.ahrarwood.utils.Utils
@@ -75,6 +76,7 @@ fun CreateMiniatureLibraryOrderPage(
         Utils.createBookListPdf(list,uniqueId.value,false)
     else
         ctx.router.navigateTo(PageRoutes.CREATE_MINIATURE_LIBRARY, updateHistoryMode = UpdateHistoryMode.REPLACE)
+    Analytics.logEvent("createLibrary ${items.value.size}")
     Box(modifier = Modifier.fillMaxSize()) {
         HomeHeader(PageRoutes.CREATE_MINIATURE_LIBRARY, modifier)
 
