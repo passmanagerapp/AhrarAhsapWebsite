@@ -2,13 +2,9 @@ package org.akilincarslan.ahrarwood.network
 
 import io.ktor.client.call.body
 import io.ktor.client.request.get
-import io.ktor.client.request.request
 import io.ktor.client.statement.HttpResponse
-import io.ktor.http.ContentType
-import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.URLProtocol
-import io.ktor.http.contentType
 import io.ktor.http.path
 import org.akilincarslan.ahrarwood.network.model.SearchResult
 
@@ -24,6 +20,7 @@ object ApiService {
                     host = OPEN_LIBRARY_BASE_URL
                     path("search.json")
                     parameters.append("author",author)
+                    parameters.append("fields","author_name,first_publish_year,isbn,publisher,title")
                 }
             }
             if (response.status == HttpStatusCode.OK) {

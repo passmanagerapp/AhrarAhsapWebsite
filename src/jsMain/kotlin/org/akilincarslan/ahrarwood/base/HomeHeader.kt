@@ -50,7 +50,7 @@ fun HomeHeader(
         .position(Position.Fixed)
         .zIndex(100)
         .backgroundColor(Color.white)
-        .padding(leftRight = if (breakpoint >= Breakpoint.MD) 36.px else 16.px),
+        .padding(leftRight = if (breakpoint >= Breakpoint.MD) 96.px else 16.px),
         contentAlignment = Alignment.TopCenter
     ) {
         Row(

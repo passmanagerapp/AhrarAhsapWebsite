@@ -37,4 +37,14 @@
     <string name="contact_email_subject">Subject</string>
     <string name="contact_email_message">Message</string>
     <string name="contact_email_send_message">Send message</string>
+
+    <!-- Create library -->
+    <string name="library_header_title">Create your library</string>
+    <string name="library_header_desc">Order of books not important</string>
+    <string name="library_header_desc2">Click order button and paste your unique to "Personalization" section at Etsy.</string>
+    <string name="copy_your_id">Copy your unique book list id:</string>
+    <string name="download_book_list">Download book list</string>
+    <string name="ok">Ok</string>
+    <string name="remove">Remove</string>
+    <string name="search_author">Search author</string>
 </resources>

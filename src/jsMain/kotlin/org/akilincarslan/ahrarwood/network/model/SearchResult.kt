@@ -14,5 +14,5 @@ data class Doc(
     val title: String,
     @SerialName("isbn") val isbn: List<String>? = emptyList(),
     @SerialName("publisher") val publisher: List<String>? = emptyList(),
-    @SerialName("publish_year") val publishYear: List<Int>? = emptyList()
+    @SerialName("first_publish_year") val firstPublishYear: Int?=null,
 )

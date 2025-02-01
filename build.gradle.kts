@@ -21,12 +21,6 @@ kobweb {
             description.set("AhrarWood is a book stand producer company that has shipping service to USA, Canada, EU countries, UK. Gift for readers, book lover gift, book stands, book holder, gift for book lovers, book house, nightstand book holder")
             head.add {
                 link(rel = "stylesheet", href = "/fonts/faces.css")
-                script(src = "https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/viewer3D.min.js") {}
-                link(
-                    type = "text/css",
-                    rel = "stylesheet",
-                    href = "https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/style.min.css"
-                )
                 script {
                     src = "js/model.js"
                 }
@@ -63,6 +57,7 @@ kotlin {
             implementation(project(":worker"))
             implementation("dev.gitlive:firebase-installations:2.1.0")
             implementation("dev.gitlive:firebase-analytics:2.1.0")
+            implementation("dev.gitlive:firebase-storage:2.1.0")
             implementation("io.ktor:ktor-client-core:3.0.3")
             implementation("io.ktor:ktor-client-js:3.0.3")
             implementation("io.ktor:ktor-client-logging:3.0.3")
@@ -70,7 +65,7 @@ kotlin {
             implementation("io.ktor:ktor-serialization-kotlinx-json:3.0.3")
             implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
             implementation(npm("three", "0.172.0"))
-
+            implementation(npm("jspdf", "2.5.1"))
         }
 
         jvmMain.dependencies {
