@@ -1,12 +1,14 @@
 package org.akilincarslan.ahrarwood.base
 
 import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.color
+import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.onClick
@@ -39,7 +41,9 @@ fun TwoWeightText(
                 .margin(left = 1.px, right = 6.px)
         )
         FaCopy(
-            modifier = modifier.onClick {
+            modifier = modifier
+                .cursor(Cursor.Pointer)
+                .onClick {
                 copyToClipboard(textBold)
             }
         )
