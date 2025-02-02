@@ -137,6 +137,7 @@ fun CreateMiniatureLibraryOrderPage(
                                 modifier = modifier.fontWeight(FontWeight.Bold))
                             FaCopy(
                                 modifier = modifier.margin(left = 6.px)
+                                    .cursor(Cursor.Pointer)
                                     .onClick {
                                         copyToClipboard("${uniqueId.value}")
                                     }
