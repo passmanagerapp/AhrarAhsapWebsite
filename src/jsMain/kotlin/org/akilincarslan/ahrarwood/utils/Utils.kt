@@ -63,9 +63,9 @@ object Utils {
     }
 
     suspend fun uploadPdfToStorage(blob: Blob,id: String) {
-        val fb =Firebase.storage(FirebaseConfig.STORAGE_BUCKET)
+        val fb =Firebase.storage
         val file = blobToFile(blob,"$id.pdf")
-        fb.reference.putFile(file, metadata = FirebaseStorageMetadata(
+        fb.reference.child("$id.pdf").putFile(file, metadata = FirebaseStorageMetadata(
             contentType = "application/pdf"
         ))
     }
