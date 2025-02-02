@@ -28,6 +28,7 @@ fun HomeFooter(
             .padding(leftRight = if (breakpoint >= Breakpoint.MD) 96.px else 16.px)
             .backgroundColor(footerBgColor),
     ) {
+        val copyRight = "${Res.string.footer_author}/${Constants.VERSION_CODE}"
         SpanText(text = Res.string.footer_author, modifier = modifier.align(Alignment.CenterStart))
         Row(modifier = modifier.align(Alignment.CenterEnd)) {
             AboutExternalIcon(modifier,breakpoint, ImagePaths.WHATSAPP, Constants.WHATSAPP_URL)
