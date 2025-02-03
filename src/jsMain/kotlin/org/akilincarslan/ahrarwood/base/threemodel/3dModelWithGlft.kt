@@ -93,7 +93,7 @@ fun setupObjSceneWithGlft(containerId: String,onModelClick:(id:String) -> Unit) 
             renderLoop(renderer, scene, camera,controls)
         },
         { progress ->
-            console.log("Loading progress: ${progress.loaded}/${progress.total}")
+            console.log("Loading model progress: ${progress.loaded}/${progress.total}")
         },
         { error ->
             console.error("Error loading OBJ file: $error")
