@@ -66,14 +66,14 @@ fun setupObjSceneWithGlft(containerId: String,onModelClick:(id:String) -> Unit) 
 
         if (intersects.isNotEmpty()) {
             val clickedObject = intersects[0].`object`
-            if (clickedObject.material.type == "MeshStandardMaterial") {
+            if (clickedObject.material.type == "MeshPhysicalMaterial") {
                 onModelClick(clickedObject.name)
             }
         }
     }
     val loader = GLTFLoader()
     loader.load(
-        "raw/model.glb",
+        "raw/bookshelf.glb",
         { obj ->
             val box = Box3().setFromObject(obj.scene)
             val center = box.getCenter(Vector3())
