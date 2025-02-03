@@ -3,11 +3,13 @@
 
 package org.akilincarslan.ahrarwood.base.threemodel
 
+import org.w3c.xhr.ProgressEvent
+
 external class GLTFLoader {
     fun load(
         url: String,
         onLoad: (gltf: GLTF) -> Unit,
-        onProgress: ((dynamic) -> Unit)? = definedExternally,
+        onProgress: ((event: ProgressEvent) -> Unit)? = definedExternally,
         onError: ((dynamic) -> Unit)? = definedExternally
     )
 }
