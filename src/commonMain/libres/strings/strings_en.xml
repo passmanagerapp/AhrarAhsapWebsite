@@ -49,4 +49,6 @@
     <string name="remove">Remove</string>
     <string name="search_author">Search author</string>
     <string name="result_found">result found</string>
+    <string name="loading">Loading:</string>
+    <string name="not_load">Model not loaded</string>
 </resources>
