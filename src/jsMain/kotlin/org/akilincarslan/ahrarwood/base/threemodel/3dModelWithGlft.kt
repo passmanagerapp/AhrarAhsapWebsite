@@ -2,6 +2,7 @@ package org.akilincarslan.ahrarwood.base.threemodel
 
 import kotlinx.browser.document
 import kotlinx.browser.window
+import org.w3c.dom.HTMLDivElement
 import org.w3c.dom.events.MouseEvent
 
 fun setupObjSceneWithGlft(containerId: String,onModelClick:(id:String) -> Unit) : Scene {
@@ -72,6 +73,17 @@ fun setupObjSceneWithGlft(containerId: String,onModelClick:(id:String) -> Unit) 
         }
     }
     val loader = GLTFLoader()
+    val loadingIndicator = (document.createElement("div") as HTMLDivElement).apply {
+        style.position = "absolute"
+        style.top = "50%"
+        style.left = "50%"
+        style.transform = "translate(-50%, -50%)"
+        style.color = "#000000"
+        style.padding = "10px"
+        style.borderRadius = "5px"
+        style.boxShadow = "0px 0px 10px rgba(0, 0, 0, 0.3)"
+    }
+    document.body?.appendChild(loadingIndicator)
     loader.load(
         "raw/bookshelf.glb",
         { obj ->
@@ -90,11 +102,17 @@ fun setupObjSceneWithGlft(containerId: String,onModelClick:(id:String) -> Unit) 
             obj.scene.asDynamic().scale.set(scale, scale, scale)
             scene.add(obj.scene)
             renderLoop(renderer, scene, camera,controls)
+            document.body?.removeChild(loadingIndicator)
         },
         { progress ->
+            runCatching {
+                val percent = (progress.load / progress.total) * 100
+                loadingIndicator.innerText = "${Res.string.loading} ${percent}%"
+            }
             console.log("Loading progress: ${progress.loaded}/${progress.total}")
         },
         { error ->
+            loadingIndicator.innerText = "${Res.string.not_load} $error"
             console.error("Error loading OBJ file: $error")
         }
     )

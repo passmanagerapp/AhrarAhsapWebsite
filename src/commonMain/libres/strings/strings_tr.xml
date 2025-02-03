@@ -49,4 +49,6 @@
     <string name="remove">Kaldır</string>
     <string name="search_author">Yazar ara</string>
     <string name="result_found">sonuç bulundu</string>
+    <string name="loading">Yükleniyor:</string>
+    <string name="not_load">Model yüklenmedi</string>
 </resources>
