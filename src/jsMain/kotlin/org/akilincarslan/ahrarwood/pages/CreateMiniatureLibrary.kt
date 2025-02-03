@@ -88,7 +88,7 @@ fun CreateMiniatureLibraryPage(
             Box(
                 modifier = modifier
                     .fillMaxWidth()
-                    .height(if (!breakpoint.isMobileCompatible()) 160.px else 120.px)
+                    .height(if (!breakpoint.isMobileCompatible()) 140.px else 120.px)
                     .padding(leftRight = if (!breakpoint.isMobileCompatible()) 96.px else 16.px)
                     .align(Alignment.TopCenter)
                     .backgroundColor(color = primaryColor),
@@ -175,7 +175,7 @@ fun CreateMiniatureLibraryPage(
                         classes(ModelStyles.modelContainer)
                         id("three-container") // ID to target the container
                         style {
-                            border(1.px, LineStyle.Solid,rgb(200,200,200))
+                          //  border(1.px, LineStyle.Solid,rgb(200,200,200))
                         }
                     }) {
                         LaunchedEffect(Unit) {

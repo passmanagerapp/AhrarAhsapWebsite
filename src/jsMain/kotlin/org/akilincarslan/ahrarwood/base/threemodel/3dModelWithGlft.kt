@@ -102,10 +102,47 @@ fun setupObjSceneWithGlft(containerId: String,onModelClick:(id:String) -> Unit) 
 }
 
 private fun renderLoop(renderer: WebGLRenderer, scene: Scene, camera: PerspectiveCamera,controls: OrbitControls) {
+    val initialPosition = Vector3().asDynamic().copy(camera.position)
+    var autoRotate = true
+    var angle = kotlin.math.atan2(camera.position.z, camera.position.x)
+    var restartTimeout: Int? = null
+    val radius = camera.position.length()
+    val prevColor = (scene.getObjectByName("book1")?.material as? MeshPhysicalMaterial)?.color?.getHex()
     fun animate() {
         window.requestAnimationFrame { animate() }
+        val currentColor = (scene.getObjectByName("book1")?.material as? MeshPhysicalMaterial)?.color?.getHex()
+        val isBook1Changed = prevColor != currentColor
+        if (autoRotate && !isBook1Changed) {
+            angle += 0.001  // Rotation speed
+
+            // Calculate new camera position
+            camera.position.x = radius * kotlin.math.cos(angle)
+            camera.position.z = radius * kotlin.math.sin(angle)
+
+            camera.asDynamic().lookAt(scene.asDynamic().position)
+        } else {
+            autoRotate = false
+            camera.position.copy(initialPosition)
+            camera.asDynamic().lookAt(scene.asDynamic().position)
+        }
+
         controls.update()
         renderer.render(scene, camera)
     }
+    controls.asDynamic().addEventListener("start", {
+        autoRotate = false
+        controls.asDynamic().addEventListener("change", {
+            angle = kotlin.math.atan2(camera.position.z, camera.position.x)
+        })
+        restartTimeout?.let { window.clearTimeout(it) }
+    })
+    controls.asDynamic().addEventListener("end", {
+        val currentColor = scene.getObjectByName("book1")?.material.asDynamic().color
+        val isBook1Changed = prevColor != currentColor
+        restartTimeout = window.setTimeout({
+            if (!isBook1Changed)
+                autoRotate = true
+        }, 5000)
+    })
     animate()
 }

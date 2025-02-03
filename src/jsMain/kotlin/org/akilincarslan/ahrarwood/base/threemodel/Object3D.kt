@@ -142,7 +142,7 @@ open external class Color {
     fun set(color: Int): Color
     fun set(color: String): Color
     fun set(r: Double, g: Double, b: Double): Color
-
+    fun getHex(): Int
 }
 
 external interface WebGLRendererOptions {
@@ -156,4 +156,8 @@ external class Box3 {
     fun setFromObject(obj: dynamic): Box3
     fun getCenter(target: Vector3): Vector3
     fun getSize(target: Vector3): Vector3
+}
+
+external interface MeshPhysicalMaterial : Material {
+    var color: Color
 }
