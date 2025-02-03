@@ -122,8 +122,6 @@ private fun renderLoop(renderer: WebGLRenderer, scene: Scene, camera: Perspectiv
             camera.asDynamic().lookAt(scene.asDynamic().position)
         } else {
             autoRotate = false
-            camera.position.copy(initialPosition)
-            camera.asDynamic().lookAt(scene.asDynamic().position)
         }
 
         controls.update()
@@ -137,11 +135,8 @@ private fun renderLoop(renderer: WebGLRenderer, scene: Scene, camera: Perspectiv
         restartTimeout?.let { window.clearTimeout(it) }
     })
     controls.asDynamic().addEventListener("end", {
-        val currentColor = scene.getObjectByName("book1")?.material.asDynamic().color
-        val isBook1Changed = prevColor != currentColor
         restartTimeout = window.setTimeout({
-            if (!isBook1Changed)
-                autoRotate = true
+            autoRotate = true
         }, 5000)
     })
     animate()
