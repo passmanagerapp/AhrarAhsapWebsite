@@ -19,7 +19,7 @@ version = "1.0-SNAPSHOT"
 kobweb {
     app {
         index {
-            description.set("AhrarWood is a book stand producer company that has shipping service to USA, Canada, EU countries, UK. Gift for readers, book lover gift, book stands, book holder, gift for book lovers, book house, nightstand book holder")
+            description.set("El yapımı ahşap işçilik, kitap severlere ahşap hediye")
             head.add {
                 link(rel = "stylesheet", href = "/fonts/faces.css")
                 meta(name = "google-site-verification", content = "JzYhq_J3Dm6Fm9CrSeD0xCmuk0ZSU6kB2GvyuIBPHNI")
