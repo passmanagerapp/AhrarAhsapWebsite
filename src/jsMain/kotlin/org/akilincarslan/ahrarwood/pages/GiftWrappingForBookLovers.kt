@@ -1,6 +1,7 @@
 package org.akilincarslan.ahrarwood.pages
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -25,6 +26,8 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.ResponsiveValues
 import com.varabyte.kobweb.silk.style.extendedBy
 import com.varabyte.kobweb.silk.style.toModifier
+import kotlinx.browser.window
+import org.akilincarslan.ahrarwood.constants.Constants
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.Span
@@ -33,6 +36,9 @@ import org.jetbrains.compose.web.dom.Text
 @Page
 @Composable
 fun GiftWrappingForBookLovers(modifier: Modifier = Modifier) {
+    LaunchedEffect(Unit) {
+        window.location.href = Constants.AHRAR_WOOD
+    }
     Box(modifier = modifier.fillMaxSize()) {
        Text("gift wrapping detail...")
     }

@@ -66,6 +66,9 @@ import kotlin.random.Random
 fun CreateMiniatureLibraryOrderPage(
     modifier: Modifier = Modifier
 ) {
+    LaunchedEffect(Unit) {
+        window.location.href = Constants.AHRAR_WOOD
+    }
     val ctx = rememberPageContext()
     val breakpoint = rememberBreakpoint()
     var items = remember { mutableStateOf<List<BookListModel>>(emptyList()) }
