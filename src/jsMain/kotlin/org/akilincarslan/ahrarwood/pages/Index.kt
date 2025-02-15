@@ -10,12 +10,14 @@ import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.varabyte.kobweb.worker.rememberWorker
+import kotlinx.browser.window
 import org.akilincarslan.ahrarwood.base.HomeBanner
 import org.akilincarslan.ahrarwood.base.HomeFooter
 import org.akilincarslan.ahrarwood.base.HomeHeader
 import org.akilincarslan.ahrarwood.base.HomeSection
 import org.akilincarslan.ahrarwood.base.HomeShipping
 import org.akilincarslan.ahrarwood.base.HomeShippingMobile
+import org.akilincarslan.ahrarwood.constants.Constants
 import org.akilincarslan.ahrarwood.constants.PageRoutes
 import org.akilincarslan.ahrarwood.extensions.isMobileCompatible
 import org.akilincarslan.ahrarwood.worker.EchoWorker
@@ -24,6 +26,9 @@ import org.jetbrains.compose.web.css.px
 @Page
 @Composable
 fun HomePage(modifier: Modifier = Modifier) {
+    LaunchedEffect(Unit) {
+        window.location.href = Constants.AHRAR_WOOD
+    }
     val worker = rememberWorker { EchoWorker { output -> console.log("Echoed: $output") } }
     LaunchedEffect(Unit) {
         worker.postInput("Hello, worker!")

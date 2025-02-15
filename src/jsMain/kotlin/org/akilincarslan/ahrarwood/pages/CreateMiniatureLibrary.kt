@@ -33,6 +33,7 @@ import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import kotlinx.browser.window
 import kotlinx.coroutines.launch
 import org.akilincarslan.ahrarwood.base.Dialog
 import org.akilincarslan.ahrarwood.base.HomeFooter
@@ -40,6 +41,7 @@ import org.akilincarslan.ahrarwood.base.HomeHeader
 import org.akilincarslan.ahrarwood.base.SearchView
 import org.akilincarslan.ahrarwood.base.threemodel.Scene
 import org.akilincarslan.ahrarwood.base.threemodel.setupObjSceneWithGlft
+import org.akilincarslan.ahrarwood.constants.Constants
 import org.akilincarslan.ahrarwood.constants.PageRoutes
 import org.akilincarslan.ahrarwood.extensions.getRandomHexColor
 import org.akilincarslan.ahrarwood.extensions.ignoreNull
@@ -66,6 +68,9 @@ import kotlin.random.Random
 fun CreateMiniatureLibraryPage(
     modifier: Modifier = Modifier
 ) {
+    LaunchedEffect(Unit) {
+        window.location.href = Constants.AHRAR_WOOD
+    }
     val ctx = rememberPageContext()
     val breakpoint = rememberBreakpoint()
     val response = remember { mutableStateOf<SearchResult?>(null) }
